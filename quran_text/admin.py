@@ -3,4 +3,16 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-# Register your models here.
+from .models import Sura, Ayah
+
+
+class SuraAdmin(admin.ModelAdmin):
+    list_display = ('index', 'name')
+
+
+class AyahAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Sura, SuraAdmin)
+admin.site.register(Ayah, AyahAdmin)
