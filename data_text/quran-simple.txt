@@ -6234,33 +6234,3 @@
 114|4|مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ
 114|5|الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ
 114|6|مِنَ الْجِنَّةِ وَالنَّاسِ
-
-
-# PLEASE DO NOT REMOVE OR CHANGE THIS COPYRIGHT BLOCK
-#====================================================================
-#
-#  Tanzil Quran Text (Simple, version 1.0.2)
-#  Copyright (C) 2008-2010 Tanzil.net
-#  License: Creative Commons Attribution 3.0
-#
-#  This copy of quran text is carefully produced, highly 
-#  verified and continuously monitored by a group of specialists 
-#  at Tanzil project.
-#
-#  TERMS OF USE:
-#
-#  - Permission is granted to copy and distribute verbatim copies 
-#    of this text, but CHANGING IT IS NOT ALLOWED.
-#
-#  - This quran text can be used in any website or application, 
-#    provided its source (Tanzil.net) is clearly indicated, and 
-#    a link is made to http://tanzil.net to enable users to keep
-#    track of changes.
-#
-#  - This copyright notice shall be included in all verbatim copies 
-#    of the text, and shall be reproduced appropriately in all files 
-#    derived from or containing substantial portion of this text.
-#
-#  Please check updates at: http://tanzil.net/updates/
-# 
-#====================================================================
