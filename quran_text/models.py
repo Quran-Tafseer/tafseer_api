@@ -11,6 +11,12 @@ class Sura(models.Model):
     index = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=20, unique=True, verbose_name=_('Sura'))
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['index']
+
 
 class Ayah(models.Model):
     """
@@ -19,3 +25,9 @@ class Ayah(models.Model):
     number = models.PositiveIntegerField(verbose_name=_('Number'))
     sura = models.ForeignKey(Sura, related_name='ayat')
     text = models.TextField()
+
+    def __str__(self):
+        return '{} - {}'.format(self.sura.index, self.number)
+
+    class Meta:
+        unique_together = ['number', 'sura']
