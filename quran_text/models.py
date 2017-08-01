@@ -31,3 +31,4 @@ class Ayah(models.Model):
 
     class Meta:
         unique_together = ['number', 'sura']
+        ordering = ['sura', 'number']
