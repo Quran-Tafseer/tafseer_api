@@ -11,7 +11,7 @@ class SuraAdmin(admin.ModelAdmin):
 
 
 class AyahAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('sura', 'number', 'text')
 
 
 admin.site.register(Sura, SuraAdmin)
