@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .serializers import SuraSerializer
+from .models import Sura
+
+
+class SuraListView(generics.ListAPIView):
+    serializer_class = SuraSerializer
+    queryset = Sura.objects.all()
