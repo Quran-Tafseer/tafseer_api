@@ -23,6 +23,12 @@ class TafseerTextManager(models.Manager):
     def get_ayah_tafseer(self, tafseer_id, sura_id, ayah_num):
         return self.get_sura_tafseer(tafseer_id, sura_id).filter(ayah__id=ayah_num).first()
 
+    def get_ayah_tafseer_range(self, tafseer_id, sura_id, ayah_from_num, ayah_to_num):
+        return self.get_sura_tafseer(tafseer_id, sura_id).filter(
+            ayah__id__gte=ayah_from_num,
+            ayah__id__lte=ayah_to_num
+        )
+
 
 class TafseerText(models.Model):
     tafseer = models.ForeignKey(Tafseer)

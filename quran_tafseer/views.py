@@ -22,3 +22,17 @@ class AyahTafseerView(generics.RetrieveAPIView):
         return TafseerText.objects.get_ayah_tafseer(tafseer_id,
                                                     sura_id,
                                                     ayah_num)
+
+
+class AyahRangeTafseerView(generics.ListAPIView):
+    serializer_class = TafseerTextSerializer
+
+    def get_queryset(self):
+        ayah_from_num = self.kwargs['ayah_from_num']
+        ayah_to_num = self.kwargs['ayah_to_num']
+        sura_id = self.kwargs['sura_id']
+        tafseer_id = self.kwargs['tafseer_id']
+        return TafseerText.objects.get_ayah_tafseer_range(tafseer_id,
+                                                          sura_id,
+                                                          ayah_from_num,
+                                                          ayah_to_num)
