@@ -30,5 +30,16 @@ class AyahRangeTextView(generics.ListAPIView):
         from_ayah = self.kwargs['ayah_from_num']
         to_ayah = self.kwargs['ayah_to_num']
         sura_id = self.kwargs['sura_num']
-        qs = Ayah.objects.filter(sura_id=sura_id, number__lte=to_ayah, number__gte=from_ayah)
+        qs = Ayah.objects.filter(
+            sura_id=sura_id, number__lte=to_ayah, number__gte=from_ayah)
+        return qs
+
+
+class AyahTextView(generics.RetrieveAPIView):
+    serializer_class = AyahSerializer
+    lookup_field = 'number'
+    lookup_url_kwargs = 'number'
+
+    def get_queryset(self):
+        qs = Ayah.objects.filter(sura_id=self.kwargs['sura_num'])
         return qs
