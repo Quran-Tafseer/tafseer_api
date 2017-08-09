@@ -14,10 +14,21 @@ class Tafseer(models.Model):
         return self.name
 
 
+class TafseerTextManager(models.Manager):
+
+    def get_sura_tafseer(self, tafseer_id, sura_id):
+        return self.filter(ayah__sura_id=sura_id,
+                           tafseer_id=tafseer_id)
+
+    def get_ayah_tafseer(self, tafseer_id, sura_id, ayah_num):
+        return self.get_sura_tafseer(tafseer_id, sura_id).filter(ayah__id=ayah_num).first()
+
+
 class TafseerText(models.Model):
     tafseer = models.ForeignKey(Tafseer)
     ayah = models.ForeignKey(Ayah)
     text = models.TextField(verbose_name=_('Tafseer'))
+    objects = TafseerTextManager()
 
     def __str__(self):
         return self.text
