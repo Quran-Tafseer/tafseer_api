@@ -19,7 +19,8 @@ class SuraAyatTextView(generics.ListAPIView):
 
     def get_queryset(self):
         # TODO return 404 if no ayat
-        qs = Ayah.objects.filter(sura_id=self.kwargs['sura_num'])
+        sura_id = self.kwargs['sura_num']
+        qs = Ayah.objects.get_sura_text(sura_id)
         return qs
 
 
@@ -30,8 +31,7 @@ class AyahRangeTextView(generics.ListAPIView):
         from_ayah = self.kwargs['ayah_from_num']
         to_ayah = self.kwargs['ayah_to_num']
         sura_id = self.kwargs['sura_num']
-        qs = Ayah.objects.filter(
-            sura_id=sura_id, number__lte=to_ayah, number__gte=from_ayah)
+        qs = Ayah.objects.get_sura_ayat_range(sura_id, from_ayah, to_ayah)
         return qs
 
 
@@ -41,5 +41,6 @@ class AyahTextView(generics.RetrieveAPIView):
     lookup_url_kwargs = 'number'
 
     def get_queryset(self):
-        qs = Ayah.objects.filter(sura_id=self.kwargs['sura_num'])
+        sura_id = self.kwargs['sura_num']
+        qs = Ayah.objects.get_sura_text(sura_id)
         return qs

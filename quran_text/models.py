@@ -18,6 +18,22 @@ class Sura(models.Model):
         ordering = ['index']
 
 
+class AyahManager(models.Manager):
+
+    def get_sura_text(self, sura_id):
+        """Get all sura ayat"""
+        return self.filter(sura_id=sura_id)
+
+    def get_sura_ayah(self, sura_id, ayah_num):
+        """Get one ayah from sura"""
+        return self.get_sura_text(sura_id).filter(number=ayah_num)
+
+    def get_sura_ayat_range(self, sura_id, from_ayah, to_ayah):
+        """Get sura ayat from range (from ayah number to ahay number)"""
+        return self.get_sura_text(sura_id).filter(number__lte=to_ayah,
+                                                  number__gte=from_ayah)
+
+
 class Ayah(models.Model):
     """
     Model to hold chapters' text ot Verse "Ayat"
@@ -25,6 +41,7 @@ class Ayah(models.Model):
     number = models.PositiveIntegerField(verbose_name=_('Number'))
     sura = models.ForeignKey(Sura, related_name='ayat')
     text = models.TextField()
+    objects = AyahManager()
 
     def __str__(self):
         return '{} - {}'.format(self.sura.index, self.number)
