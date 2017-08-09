@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .serializers import TafseerSerializer
+from .models import Tafseer
+
+
+class TafseerView(generics.ListAPIView):
+    serializer_class = TafseerSerializer
+    queryset = Tafseer.objects.all()
