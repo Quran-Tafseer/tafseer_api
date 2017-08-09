@@ -18,7 +18,7 @@ class AyahTafseerView(generics.RetrieveAPIView):
     def get_object(self):
         tafseer_id = self.kwargs['tafseer_id']
         sura_id = self.kwargs['sura_id']
-        ayah_num = self.kwargs['ayah_numb']
+        ayah_num = self.kwargs['ayah_num']
         return TafseerText.objects.get_ayah_tafseer(tafseer_id,
                                                     sura_id,
                                                     ayah_num)
