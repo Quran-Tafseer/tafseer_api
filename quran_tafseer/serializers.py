@@ -16,6 +16,7 @@ class TafseerTextSerializer(serializers.ModelSerializer):
     tafseer_id = serializers.IntegerField(source='tafseer.id')
     tafseer_name = serializers.CharField(source='tafseer.name')
     ayah_url = serializers.SerializerMethodField()
+    ayah_number = serializers.IntegerField(source='ayah')
 
     def get_ayah_url(self, obj):
         return reverse('ayah-detail', kwargs={'number': obj.ayah.number,
@@ -23,4 +24,4 @@ class TafseerTextSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TafseerText
-        fields = ['tafseer_id', 'tafseer_name', 'ayah_url', 'ayah', 'text']
+        fields = ['tafseer_id', 'tafseer_name', 'ayah_url', 'ayah_number', 'text']
