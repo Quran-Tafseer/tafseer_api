@@ -11,10 +11,10 @@ class SuraSerializer(serializers.ModelSerializer):
 
 
 class AyahSerializer(serializers.ModelSerializer):
-    sura_id = serializers.IntegerField(source='sura.pk')
+    sura_index = serializers.IntegerField(source='sura.pk')
     sura_name = serializers.CharField(source='sura.name')
     ayah_number = serializers.IntegerField(source='number')
 
     class Meta:
         model = Ayah
-        fields = ['sura_id', 'sura_name', 'ayah_number', 'text']
+        fields = ['sura_index', 'sura_name', 'ayah_number', 'text']
