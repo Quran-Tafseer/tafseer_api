@@ -4,6 +4,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^docs/', include('docs.urls')),
     url(r'^quran/', include('quran_text.urls')),
     url(r'^tafseer/', include('quran_tafseer.urls')),
     url(r'^admin/', admin.site.urls),
