@@ -102,3 +102,6 @@ ENV/
 
 # virtualenvwrapper
 .project
+
+# mac
+.DS_Store
