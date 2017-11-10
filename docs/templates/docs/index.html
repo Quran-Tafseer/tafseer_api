@@ -8,11 +8,15 @@
     {% trans "Quran Tafseer API - Documentation" %}
 {% endblock %}
 {% block container %}
-<div class="jumbotron">
+<div class="jumbotron" id="home">
   <div class="container">
-    <h1>Quran Tafseer</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    <h1>{% trans "Quran Tafseer" %}</h1>
+    <p>
+        {% blocktrans %}
+        This is an REST APIs fro Quran Tafseer or Translation, it's a place
+        you'll find most of Quran Tafseer oneline, and it's free to use.
+        {% endblocktrans %}
+    </p>
   </div>
 </div>
 
@@ -20,17 +24,18 @@
     <div class="col-md-3">
         <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs affix">
             <ul id="slider" class="nav">
-                <li><a href="#sura-list">Chapter List</a></li>
-                <li><a href="#ayah-details">Verse Details</a></li>
-                <li><a href="#tafseer-list">Tafseer List</a></li>
-                <li><a href="#ayah-tafseer">Ayah's Tafseer</a></li>
+                <li><a href="#home">{% trans "Home" %}</a></li>
+                <li><a href="#sura-list">{% trans "Chapter List" %}</a></li>
+                <li><a href="#ayah-details">{% trans "Verse Details" %}</a></li>
+                <li><a href="#tafseer-list">{% trans "Tafseer List" %}</a></li>
+                <li><a href="#ayah-tafseer">{% trans "Ayah's Tafseer" %}</a></li>
             </ul>
         </nav>
     </div>
     <div class="col-md-9">
         <div id="sura-list">
             <div class="row">
-                <h1>Chapter List Endpoint</h1>
+                <h1>{% trans "Chapter List Endpoint" %}</h1>
                 <div class="well">
                     <span class="label label-success">GET</span>
                     <code>
@@ -39,11 +44,13 @@
                 </div>
             </div>
             <div class="row">
-                <h4>Description</h4>
-                Simple API endpoint to get a list of Quran chapters, the <code>index</code> can be use in other endpoints.
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}
+                    Simple API endpoint to get a list of Quran chapters, the <code>index</code> can be use in other endpoints.
+                {% endblocktrans %}
             </div>
             <div class="row">
-                <h4>Response body</h4>
+                <h4>{% trans "Response body" %}</h4>
                 <figure class="highlight">
                     <pre>
                         <code class="language-json" lang="json">
@@ -70,7 +77,7 @@
         <hr>
         <div id="ayah-details">
             <div class="row">
-                <h1>Verse Details Endpoint</h1>
+                <h1>{% trans "Verse Details Endpoint" %}</h1>
                 <div class="well">
                     <span class="label label-success">GET</span>
                     <code>
@@ -79,11 +86,13 @@
                 </div>
             </div>
             <div class="row">
-                <h4>Description</h4>
-                API endpoint to get a text for specific Verse in Sura, you should pass <code>Sura number</code> and <code>Ayah number</code> in URI.
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}
+                    API endpoint to get a text for specific Verse in Sura, you should pass <code>Sura number</code> and <code>Ayah number</code> as query parameter.
+                {% endblocktrans %}
             </div>
             <div class="row">
-                <h4>Response body</h4>
+                <h4>{% trans "Response body" %}</h4>
                 <pre>
                     <code class="language-json" lang="json">
 {
@@ -99,7 +108,7 @@
         <hr>
         <div id="tafseer-list">
             <div class="row">
-                <h1>Tafseer List Endpoint</h1>
+                <h1>{% trans "Tafseer List Endpoint" %}</h1>
                 <div class="well">
                     <span class="label label-success">GET</span>
                     <code>
@@ -108,11 +117,13 @@
                 </div>
             </div>
             <div class="row">
-                <h4>Description</h4>
-                Simple API endpoint to get a list of Quran tafseer avaliable in <b>Tafseer API</b>, the <code>id</code> can be use in other endpoints.
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}
+                    Simple API endpoint to get a list of Quran tafseer avaliable in <b>Tafseer API</b>, the <code>id</code> can be use in other endpoints.
+                {% endblocktrans %}
             </div>
             <div class="row">
-                <h4>Response body</h4>
+                <h4>{% trans "Response body" %}</h4>
                 <pre>
                     <code class="language-json" lang="json">
 [
@@ -132,7 +143,7 @@
         <hr>
         <div id="ayah-tafseer">
             <div class="row">
-                <h1>Verse Tafseer Endpoint</h1>
+                <h1>{% trans "Verse Tafseer Endpoint" %}</h1>
                 <div class="well">
                     <span class="label label-success">GET</span>
                     <code>
@@ -141,12 +152,18 @@
                 </div>
             </div>
             <div class="row">
-                <h4>Description</h4>
-                API endpoint to get a tafseer specific tasfeer for verse in chapter,  you should pass <code>Tafseer Id</code> which can get from <a href="#tafseer-list">Tafseer List Endpoint</a>,
-                 <code>Sura number</code>, and <code>Ayah number</code> in URI.
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}
+                API endpoint to get a specific tasfeer for verse in
+                chapter, you should pass <code>Tafseer Id</code> which can get
+                from <a href='#tafseer-list'>Tafseer List Endpoint</a>,
+                <code>Sura number</code>, and <code>Ayah number</code> as query
+                 parameter.
+                {% endblocktrans %}
+
             </div>
             <div class="row">
-                <h4>Response body</h4>
+                <h4>{% trans "Response body" %}</h4>
                 <pre>
                     <code class="language-json" lang="json">
 [
