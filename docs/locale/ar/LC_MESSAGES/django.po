@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-15 20:38+0000\n"
+"POT-Creation-Date: 2017-11-15 20:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,100 +25,93 @@ msgstr ""
 
 #: docs/templates/docs/index.html:13
 msgid "Quran Tafseer"
-msgstr ""
+msgstr "تفاسيير القرآن"
 
 #: docs/templates/docs/index.html:15
-msgid ""
-"\n"
-"        Main Description\n"
-"        "
-msgstr "واجهة برمجة التطبيقات"
+msgid "Main Description"
+msgstr  "واجهة لصناعة التطبيقات خاصة بتفسير القرآن الكريم تتيح لمطورين البرامج"
+" أستخدامها بدون مقابل مادي"
 
-#: docs/templates/docs/index.html:26
+#: docs/templates/docs/index.html:24
 msgid "Home"
 msgstr "الرئيسية"
 
-#: docs/templates/docs/index.html:27
+#: docs/templates/docs/index.html:25
 msgid "Chapter List"
 msgstr "أسماء السور"
 
-#: docs/templates/docs/index.html:28
+#: docs/templates/docs/index.html:26
 msgid "Verse Details"
 msgstr "معلومات عن الآيه"
 
-#: docs/templates/docs/index.html:29
+#: docs/templates/docs/index.html:27
 msgid "Tafseer List"
 msgstr "التفاسير المتاحة"
 
-#: docs/templates/docs/index.html:30
+#: docs/templates/docs/index.html:28
 msgid "Ayah's Tafseer"
 msgstr "تفسير الآيه"
 
-#: docs/templates/docs/index.html:37
+#: docs/templates/docs/index.html:35
 msgid "Chapter List Endpoint"
 msgstr "نقطة الإتصال بأسماء السور"
 
-#: docs/templates/docs/index.html:46 docs/templates/docs/index.html:88
-#: docs/templates/docs/index.html:119 docs/templates/docs/index.html:154
+#: docs/templates/docs/index.html:44 docs/templates/docs/index.html:84
+#: docs/templates/docs/index.html:113 docs/templates/docs/index.html:146
 msgid "Description"
 msgstr "الوصف"
 
-#: docs/templates/docs/index.html:47
+#: docs/templates/docs/index.html:45
 msgid ""
-"\n"
-"                    Simple API endpoint to get a list of Quran chapters, the "
-"<code>index</code> can be use in other endpoints.\n"
-"                "
-msgstr ""
+"Simple API endpoint to get a list of Quran chapters, the <code>index</code> "
+"can be use in other endpoints."
+msgstr "نقطة إتصال لمعرفة كل سور القرآن مع رقمها"
+" يمكن أستخدام رقم السورة في نقاط الإتصال الآخرى"
 
-#: docs/templates/docs/index.html:52 docs/templates/docs/index.html:94
-#: docs/templates/docs/index.html:125 docs/templates/docs/index.html:165
+
+#: docs/templates/docs/index.html:48 docs/templates/docs/index.html:88
+#: docs/templates/docs/index.html:117 docs/templates/docs/index.html:151
 msgid "Response body"
 msgstr "محتوى الرسالة المستقبلة"
 
-#: docs/templates/docs/index.html:79
+#: docs/templates/docs/index.html:75
 msgid "Verse Details Endpoint"
 msgstr "نقطة الإتصال الخاصة بمعلومات الآيه"
 
-#: docs/templates/docs/index.html:89
+#: docs/templates/docs/index.html:85
 msgid ""
-"\n"
-"                    API endpoint to get a text for specific Verse in Sura, "
-"you should pass <code>Sura number</code> and <code>Ayah number</code> as "
-"query parameter.\n"
-"                "
+"API endpoint to get a text for specific Verse in Sura, you should pass "
+"<code>Sura number</code> and <code>Ayah number</code> as query parameter."
 msgstr ""
 
-#: docs/templates/docs/index.html:110
+#: docs/templates/docs/index.html:104
 msgid "Tafseer List Endpoint"
 msgstr "نقطة الإتصال الخاصة بالتفاسير المتاحة"
 
-#: docs/templates/docs/index.html:120
+#: docs/templates/docs/index.html:114
 msgid ""
-"\n"
-"                    Simple API endpoint to get a list of Quran tafseer "
-"avaliable in <b>Tafseer API</b>, the <code>id</code> can be use in other "
-"endpoints.\n"
-"                "
+"Simple API endpoint to get a list of Quran tafseer avaliable in <b>Tafseer "
+"API</b>, the <code>id</code> can be use in other endpoints."
 msgstr ""
 
-#: docs/templates/docs/index.html:145
+#: docs/templates/docs/index.html:137
 msgid "Verse Tafseer Endpoint"
 msgstr "نقطة الإتصال الخاصة بتفسيير الآيه"
 
-#: docs/templates/docs/index.html:155
+#: docs/templates/docs/index.html:147
 msgid ""
-"\n"
-"                API endpoint to get a specific tasfeer for verse in\n"
-"                chapter, you should pass <code>Tafseer Id</code> which can "
-"get\n"
-"                from <a href='#tafseer-list'>Tafseer List Endpoint</a>,\n"
-"                <code>Sura number</code>, and <code>Ayah number</code> as "
-"query\n"
-"                 parameter.\n"
-"                "
+"API endpoint to get a specific tasfeer for verse in chapter, you should pass "
+"<code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer "
+"List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as "
+"query parameter."
 msgstr ""
 
 #: docs/templates/menu.html:15
 msgid "Quran Tafseer API docs"
 msgstr "شرح وسائل الإتصال الخاصة بتفاسيير القرآن "
+
+#~ msgid ""
+#~ "\n"
+#~ "        Main Description\n"
+#~ "        "
+#~ msgstr "واجهة برمجة التطبيقات"

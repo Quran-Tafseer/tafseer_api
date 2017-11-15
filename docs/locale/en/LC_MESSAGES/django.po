@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-15 20:36+0000\n"
+"POT-Creation-Date: 2017-11-15 20:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,96 +26,80 @@ msgid "Quran Tafseer"
 msgstr ""
 
 #: docs/templates/docs/index.html:15
-msgid ""
-"\n"
-"        Main Description\n"
-"        "
-msgstr "This is an REST APIs fro Quran Tafseer or Translation, it's a place"
-"you'll find most of Quran Tafseer, and it's free to use."
+msgid "Main Description"
+msgstr "This is an REST APIs fro Quran Tafseer or Translation, it's a place you'll "
+"find most of Quran Tafseer, and it's free to use."
 
-#: docs/templates/docs/index.html:26
+#: docs/templates/docs/index.html:24
 msgid "Home"
 msgstr ""
 
-#: docs/templates/docs/index.html:27
+#: docs/templates/docs/index.html:25
 msgid "Chapter List"
 msgstr ""
 
-#: docs/templates/docs/index.html:28
+#: docs/templates/docs/index.html:26
 msgid "Verse Details"
 msgstr ""
 
-#: docs/templates/docs/index.html:29
+#: docs/templates/docs/index.html:27
 msgid "Tafseer List"
 msgstr ""
 
-#: docs/templates/docs/index.html:30
+#: docs/templates/docs/index.html:28
 msgid "Ayah's Tafseer"
 msgstr ""
 
-#: docs/templates/docs/index.html:37
+#: docs/templates/docs/index.html:35
 msgid "Chapter List Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:46 docs/templates/docs/index.html:88
-#: docs/templates/docs/index.html:119 docs/templates/docs/index.html:154
+#: docs/templates/docs/index.html:44 docs/templates/docs/index.html:84
+#: docs/templates/docs/index.html:113 docs/templates/docs/index.html:146
 msgid "Description"
 msgstr ""
 
-#: docs/templates/docs/index.html:47
+#: docs/templates/docs/index.html:45
 msgid ""
-"\n"
-"                    Simple API endpoint to get a list of Quran chapters, the "
-"<code>index</code> can be use in other endpoints.\n"
-"                "
+"Simple API endpoint to get a list of Quran chapters, the <code>index</code> "
+"can be use in other endpoints."
 msgstr ""
 
-#: docs/templates/docs/index.html:52 docs/templates/docs/index.html:94
-#: docs/templates/docs/index.html:125 docs/templates/docs/index.html:165
+#: docs/templates/docs/index.html:48 docs/templates/docs/index.html:88
+#: docs/templates/docs/index.html:117 docs/templates/docs/index.html:151
 msgid "Response body"
 msgstr ""
 
-#: docs/templates/docs/index.html:79
+#: docs/templates/docs/index.html:75
 msgid "Verse Details Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:89
+#: docs/templates/docs/index.html:85
 msgid ""
-"\n"
-"                    API endpoint to get a text for specific Verse in Sura, "
-"you should pass <code>Sura number</code> and <code>Ayah number</code> as "
-"query parameter.\n"
-"                "
+"API endpoint to get a text for specific Verse in Sura, you should pass "
+"<code>Sura number</code> and <code>Ayah number</code> as query parameter."
 msgstr ""
 
-#: docs/templates/docs/index.html:110
+#: docs/templates/docs/index.html:104
 msgid "Tafseer List Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:120
+#: docs/templates/docs/index.html:114
 msgid ""
-"\n"
-"                    Simple API endpoint to get a list of Quran tafseer "
-"avaliable in <b>Tafseer API</b>, the <code>id</code> can be use in other "
-"endpoints.\n"
-"                "
+"Simple API endpoint to get a list of Quran tafseer avaliable in <b>Tafseer "
+"API</b>, the <code>id</code> can be use in other endpoints."
 msgstr ""
 
-#: docs/templates/docs/index.html:145
+#: docs/templates/docs/index.html:137
 msgid "Verse Tafseer Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:155
+#: docs/templates/docs/index.html:147
 msgid ""
-"\n"
-"                API endpoint to get a specific tasfeer for verse in\n"
-"                chapter, you should pass <code>Tafseer Id</code> which can "
-"get\n"
-"                from <a href='#tafseer-list'>Tafseer List Endpoint</a>,\n"
-"                <code>Sura number</code>, and <code>Ayah number</code> as "
-"query\n"
-"                 parameter.\n"
-"                "
+"API endpoint to get a specific tasfeer for verse in chapter, you should pass "
+"<code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer "
+"List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as "
+"query parameter."
 msgstr ""
 
 #: docs/templates/menu.html:15
