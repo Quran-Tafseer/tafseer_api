@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-10 22:56+0000\n"
+"POT-Creation-Date: 2017-11-15 20:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,41 +28,41 @@ msgstr ""
 #: docs/templates/docs/index.html:15
 msgid ""
 "\n"
-"        This is an REST APIs fro Quran Tafseer or Translation, it's a place\n"
-"        you'll find most of Quran Tafseer oneline, and it's free to use.\n"
+"        Main Description\n"
 "        "
-msgstr ""
+msgstr "This is an REST APIs fro Quran Tafseer or Translation, it's a place"
+"you'll find most of Quran Tafseer, and it's free to use."
 
-#: docs/templates/docs/index.html:27
+#: docs/templates/docs/index.html:26
 msgid "Home"
 msgstr ""
 
-#: docs/templates/docs/index.html:28
+#: docs/templates/docs/index.html:27
 msgid "Chapter List"
 msgstr ""
 
-#: docs/templates/docs/index.html:29
+#: docs/templates/docs/index.html:28
 msgid "Verse Details"
 msgstr ""
 
-#: docs/templates/docs/index.html:30
+#: docs/templates/docs/index.html:29
 msgid "Tafseer List"
 msgstr ""
 
-#: docs/templates/docs/index.html:31
+#: docs/templates/docs/index.html:30
 msgid "Ayah's Tafseer"
 msgstr ""
 
-#: docs/templates/docs/index.html:38
+#: docs/templates/docs/index.html:37
 msgid "Chapter List Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:47 docs/templates/docs/index.html:89
-#: docs/templates/docs/index.html:120 docs/templates/docs/index.html:155
+#: docs/templates/docs/index.html:46 docs/templates/docs/index.html:88
+#: docs/templates/docs/index.html:119 docs/templates/docs/index.html:154
 msgid "Description"
 msgstr ""
 
-#: docs/templates/docs/index.html:48
+#: docs/templates/docs/index.html:47
 msgid ""
 "\n"
 "                    Simple API endpoint to get a list of Quran chapters, the "
@@ -70,16 +70,16 @@ msgid ""
 "                "
 msgstr ""
 
-#: docs/templates/docs/index.html:53 docs/templates/docs/index.html:95
-#: docs/templates/docs/index.html:126 docs/templates/docs/index.html:166
+#: docs/templates/docs/index.html:52 docs/templates/docs/index.html:94
+#: docs/templates/docs/index.html:125 docs/templates/docs/index.html:165
 msgid "Response body"
 msgstr ""
 
-#: docs/templates/docs/index.html:80
+#: docs/templates/docs/index.html:79
 msgid "Verse Details Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:90
+#: docs/templates/docs/index.html:89
 msgid ""
 "\n"
 "                    API endpoint to get a text for specific Verse in Sura, "
@@ -88,11 +88,11 @@ msgid ""
 "                "
 msgstr ""
 
-#: docs/templates/docs/index.html:111
+#: docs/templates/docs/index.html:110
 msgid "Tafseer List Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:121
+#: docs/templates/docs/index.html:120
 msgid ""
 "\n"
 "                    Simple API endpoint to get a list of Quran tafseer "
@@ -101,11 +101,11 @@ msgid ""
 "                "
 msgstr ""
 
-#: docs/templates/docs/index.html:146
+#: docs/templates/docs/index.html:145
 msgid "Verse Tafseer Endpoint"
 msgstr ""
 
-#: docs/templates/docs/index.html:156
+#: docs/templates/docs/index.html:155
 msgid ""
 "\n"
 "                API endpoint to get a specific tasfeer for verse in\n"
@@ -116,4 +116,8 @@ msgid ""
 "query\n"
 "                 parameter.\n"
 "                "
+msgstr ""
+
+#: docs/templates/menu.html:15
+msgid "Quran Tafseer API docs"
 msgstr ""
