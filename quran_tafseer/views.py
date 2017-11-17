@@ -14,6 +14,7 @@ class TafseerView(generics.ListAPIView):
 
 class AyahTafseerView(generics.RetrieveAPIView):
     serializer_class = TafseerTextSerializer
+    model = TafseerText
 
     def get_object(self):
         tafseer_id = self.kwargs['tafseer_id']
