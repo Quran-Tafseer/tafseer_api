@@ -10,4 +10,4 @@ urlpatterns = [
                                namespace='rest_framework')),
     ]
 
-urlpatterns += i18n_patterns(url(r'^docs/', include('docs.urls')))
+urlpatterns += i18n_patterns(url(r'^', include('docs.urls')))
