@@ -103,5 +103,8 @@ ENV/
 # virtualenvwrapper
 .project
 
-# mac
+# db
+db.sqlite3
+
+# MacOS
 .DS_Store
