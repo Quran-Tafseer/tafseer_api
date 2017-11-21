@@ -82,7 +82,7 @@ msgstr "نقطة الإتصال الخاصة بمعلومات الآيه"
 msgid ""
 "API endpoint to get a text for specific Verse in Sura, you should pass "
 "<code>Sura number</code> and <code>Ayah number</code> as query parameter."
-msgstr ""
+msgstr "نقطة إتصال تتيح لك معرفة محتوى الآيه في القرآن الكريم"
 
 #: docs/templates/docs/index.html:104
 msgid "Tafseer List Endpoint"
@@ -92,7 +92,7 @@ msgstr "نقطة الإتصال الخاصة بالتفاسير المتاحة"
 msgid ""
 "Simple API endpoint to get a list of Quran tafseer avaliable in <b>Tafseer "
 "API</b>, the <code>id</code> can be use in other endpoints."
-msgstr ""
+msgstr "نقطة إتصال تتيح لك معرفة أنوع التفاسير المتاحة"
 
 #: docs/templates/docs/index.html:137
 msgid "Verse Tafseer Endpoint"
@@ -104,7 +104,7 @@ msgid ""
 "<code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer "
 "List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as "
 "query parameter."
-msgstr ""
+msgstr "نقطة إتصال تتيح لك معرفة تفسير الإيه حسب نوع التفسير"
 
 #: docs/templates/menu.html:15
 msgid "Quran Tafseer API docs"
