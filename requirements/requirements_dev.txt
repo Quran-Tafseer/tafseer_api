@@ -1,7 +1,7 @@
 configparser==3.5.0
-Django==1.11.3
+Django==1.11.7
 django-filter==1.0.4
-djangorestframework==3.6.3
+djangorestframework==3.7.3
 enum34==1.1.6
 flake8==3.4.1
 flake8-isort==2.2.1
