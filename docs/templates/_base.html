@@ -1,0 +1,45 @@
+{% load staticfiles %}
+{% load i18n %}
+{% get_current_language_bidi as RTL %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"  type="image/x-icon">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/flat-ui.min.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% if RTL %}
+        <link href="{% static 'css/bootstrap-rtl.css' %}" rel="stylesheet">
+    {% endif %}
+    <style media="screen">
+        body {
+            padding-bottom: 70px;
+        }
+    </style>
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+{% include "menu.html" %}
+<div class="container">
+    {% block container %}
+    {%  endblock %}
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

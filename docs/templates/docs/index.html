@@ -1,0 +1,168 @@
+{% extends "_base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language_bidi as RTL %}
+{% block title %}
+    {% trans "Quran Tafseer API - Documentation" %}
+{% endblock %}
+{% block container %}
+<div class="jumbotron" id="home">
+  <div class="container">
+    <h1>{% trans "Quran Tafseer" %}</h1>
+    <p>
+        {% blocktrans %}Main Description{% endblocktrans %}
+    </p>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs affix">
+            <ul id="slider" class="nav">
+                <li><a href="#home">{% trans "Home" %}</a></li>
+                <li><a href="#sura-list">{% trans "Chapter List" %}</a></li>
+                <li><a href="#ayah-details">{% trans "Verse Details" %}</a></li>
+                <li><a href="#tafseer-list">{% trans "Tafseer List" %}</a></li>
+                <li><a href="#ayah-tafseer">{% trans "Ayah's Tafseer" %}</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-9">
+        <div id="sura-list">
+            <div class="row">
+                <h1>{% trans "Chapter List Endpoint" %}</h1>
+                <div class="well">
+                    <span class="label label-success">GET</span>
+                    <code>
+                        <a href="api.quran-tafseer.com/quran/">api.quran-tafseer.com/quran</a>
+                    </code>
+                </div>
+            </div>
+            <div class="row">
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}Simple API endpoint to get a list of Quran chapters, the <code>index</code> can be use in other endpoints.{% endblocktrans %}
+            </div>
+            <div class="row">
+                <h4>{% trans "Response body" %}</h4>
+                <figure class="highlight">
+                    <pre>
+                        <code class="language-json" lang="json">
+[
+    {
+        "index": 1,
+        "name": "الفاتحة"
+    },
+    {
+        "index": 2,
+        "name": "البقرة"
+    },
+    {
+        "index": 3,
+        "name": "آل عمران"
+    },
+    ...
+]
+                        </code>
+                    </pre>
+                </figure>
+            </div>
+        </div>
+        <hr>
+        <div id="ayah-details">
+            <div class="row">
+                <h1>{% trans "Verse Details Endpoint" %}</h1>
+                <div class="well">
+                    <span class="label label-success">GET</span>
+                    <code>
+                        <a href="api.quran-tafseer.com/quran/1/1">api.quran-tafseer.com/quran/{sura_number}/{ayah_number}</a>
+                    </code>
+                </div>
+            </div>
+            <div class="row">
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}API endpoint to get a text for specific Verse in Sura, you should pass <code>Sura number</code> and <code>Ayah number</code> as query parameter.{% endblocktrans %}
+            </div>
+            <div class="row">
+                <h4>{% trans "Response body" %}</h4>
+                <pre>
+                    <code class="language-json" lang="json">
+{
+    "sura_index": 1,
+    "sura_name": "الفاتحة",
+    "ayah_number": 1,
+    "text": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ"
+}
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <hr>
+        <div id="tafseer-list">
+            <div class="row">
+                <h1>{% trans "Tafseer List Endpoint" %}</h1>
+                <div class="well">
+                    <span class="label label-success">GET</span>
+                    <code>
+                        <a href="api.quran-tafseer.com/tafseer/">api.quran-tafseer.com/tafseer</a>
+                    </code>
+                </div>
+            </div>
+            <div class="row">
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}Simple API endpoint to get a list of Quran tafseer avaliable in <b>Tafseer API</b>, the <code>id</code> can be use in other endpoints.{% endblocktrans %}
+            </div>
+            <div class="row">
+                <h4>{% trans "Response body" %}</h4>
+                <pre>
+                    <code class="language-json" lang="json">
+[
+    {
+        "id": 1,
+        "name": "التفسير الميسر"
+    },
+    {
+        "id": 2,
+        "name": "تفسير الجلالين"
+    }
+]
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <hr>
+        <div id="ayah-tafseer">
+            <div class="row">
+                <h1>{% trans "Verse Tafseer Endpoint" %}</h1>
+                <div class="well">
+                    <span class="label label-success">GET</span>
+                    <code>
+                        <a href="api.quran-tafseer.com/tafseer/1/1/1">api.quran-tafseer.com/tafseer/{tafseer_id}/{sura_number}/{ayah_number}</a>
+                    </code>
+                </div>
+            </div>
+            <div class="row">
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}API endpoint to get a specific tasfeer for verse in chapter, you should pass <code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as query parameter.{% endblocktrans %}
+
+            </div>
+            <div class="row">
+                <h4>{% trans "Response body" %}</h4>
+                <pre>
+                    <code class="language-json" lang="json">
+{
+    "tafseer_id": 1,
+    "tafseer_name": "التفسير الميسر",
+    "ayah_url": "/quran/2/1",
+    "ayah_number": 8,
+    "text": "هذه الحروف وغيرها من الحروف المقطَّعة في أوائل السور فيها إشارة إلى إعجاز القرآن؛ فقد وقع به تحدي المشركين، فعجزوا عن معارضته، وهو مركَّب من هذه الحروف التي تتكون منها لغة العرب. فدَلَّ عجز العرب عن الإتيان بمثله -مع أنهم أفصح الناس- على أن القرآن وحي من الله."
+}
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
