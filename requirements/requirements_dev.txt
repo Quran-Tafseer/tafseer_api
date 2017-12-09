@@ -1,14 +1,12 @@
 configparser==3.5.0
-coverage==4.4.2
-Django==1.11.3
+Django==1.11.7
 django-filter==1.0.4
-djangorestframework==3.6.3
+djangorestframework==3.7.3
 enum34==1.1.6
 flake8==3.4.1
 flake8-isort==2.2.1
 flake8-polyfill==1.0.1
 isort==4.2.15
-Markdown==2.6.8
 mccabe==0.6.1
 model-mommy==1.4.0
 pycodestyle==2.3.1
