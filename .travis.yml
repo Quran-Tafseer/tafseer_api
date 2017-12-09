@@ -5,4 +5,5 @@ python:
 install:
   - pip install -r requirements/requirements_dev.txt
 script:
-  - python manage.py test
+  - coverage manage.py test
+  - codecov
