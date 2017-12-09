@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from rest_framework import generics
 
-from .serializers import SuraSerializer, AyahSerializer
-from .models import Sura, Ayah
+from .models import Ayah, Sura
+from .serializers import AyahSerializer, SuraSerializer
 
 
 class SuraListView(generics.ListAPIView):

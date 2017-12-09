@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Sura, Ayah
+from .models import Ayah, Sura
 
 
 class SuraAdmin(admin.ModelAdmin):

@@ -1,9 +1,9 @@
+from django.urls import reverse
+
+from model_mommy import mommy
 from rest_framework.test import APITestCase
 
-from django.urls import reverse
-from model_mommy import mommy
-
-from ..models import Sura, Ayah
+from ..models import Ayah, Sura
 from ..serializers import SuraSerializer
 
 

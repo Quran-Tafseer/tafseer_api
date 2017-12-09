@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Sura, Ayah
+from .models import Ayah, Sura
 
 
 class SuraSerializer(serializers.ModelSerializer):

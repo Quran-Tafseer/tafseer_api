@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
+
 from django.test import TestCase
 
 from model_mommy import mommy
 
-from ..serializers import SuraSerializer, AyahSerializer
+from ..serializers import AyahSerializer, SuraSerializer
 
 
 class QuranTextSerializer(TestCase):
