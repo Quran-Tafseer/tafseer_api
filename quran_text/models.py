@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.utils.translation import ugettext_lazy as _
+
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Sura(models.Model):
@@ -44,7 +45,7 @@ class Ayah(models.Model):
     objects = AyahManager()
 
     def __str__(self):
-        return '{} - {}'.format(self.sura.index, self.number)
+        return '{ayah.sura.index} - {ayah.number}'.format(ayah=self)
 
     class Meta:
         unique_together = ['number', 'sura']

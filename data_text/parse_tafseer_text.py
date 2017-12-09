@@ -1,5 +1,5 @@
+from quran_tafseer.models import Tafseer, TafseerText
 from quran_text.models import Ayah
-from quran_tafseer.models import TafseerText, Tafseer
 
 
 def parse_tafseer_file(file_name, tafseer_name):

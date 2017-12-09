@@ -1,0 +1,14 @@
+[run]
+branch = True
+
+omit = *migrations*
+       */tests/*
+       data_text/*
+       tafseer_api/wsgi.py
+       manage.py
+
+source = .
+
+[html]
+directory = htmlcov
+title = Tafseer API Test Coverage Report

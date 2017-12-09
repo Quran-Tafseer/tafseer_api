@@ -6,3 +6,4 @@ from django.apps import AppConfig
 
 class QuranTafseerConfig(AppConfig):
     name = 'quran_tafseer'
+    verbose_name = 'Quran Tafseer REST API'

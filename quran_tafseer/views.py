@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from rest_framework import generics
 
-from .serializers import TafseerSerializer, TafseerTextSerializer
 from .models import Tafseer, TafseerText
+from .serializers import TafseerSerializer, TafseerTextSerializer
 
 
 class TafseerView(generics.ListAPIView):
