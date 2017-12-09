@@ -44,7 +44,7 @@ class Ayah(models.Model):
     objects = AyahManager()
 
     def __str__(self):
-        return '{} - {}'.format(self.sura.index, self.number)
+        return '{ayah.sura.index} - {ayah.number}'.format(ayah=self)
 
     class Meta:
         unique_together = ['number', 'sura']
