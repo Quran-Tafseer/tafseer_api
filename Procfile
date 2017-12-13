@@ -1,1 +1,1 @@
-web: gunicorn myproject.wsgi --log-file -
+web: gunicorn tafseer_api.wsgi --log-file -
