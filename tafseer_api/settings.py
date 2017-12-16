@@ -111,3 +111,16 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 OPBEAT = env.dict('OPBEAT', {})
+
+REST_FRAMEWORK_RENDERER = env.list('REST_FRAMEWORK_RENDERER', default=[])
+
+REST_FRAMEWORK_PARSER = env.list('REST_FRAMEWORK_PARSER', default=[])
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ] + REST_FRAMEWORK_RENDERER,
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ] + REST_FRAMEWORK_PARSER
+}
