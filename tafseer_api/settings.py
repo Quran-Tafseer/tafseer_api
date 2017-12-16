@@ -110,7 +110,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-OPBEAT = env.dict('OPBEAT', {})
+OPBEAT = env.dict('OPBEAT', default={})
 
 REST_FRAMEWORK_RENDERER = env.list('REST_FRAMEWORK_RENDERER', default=[])
 
