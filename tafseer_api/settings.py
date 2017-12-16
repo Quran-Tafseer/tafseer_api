@@ -48,6 +48,8 @@ MIDDLEWARE = PRE_MIDDLEWARE + [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ] + POST_MIDDLEWARE
 
+MIDDLEWARE_CLASSES = env.list('MIDDLEWARE_CLASSES', default=[])
+
 ROOT_URLCONF = 'tafseer_api.urls'
 
 TEMPLATES = [
