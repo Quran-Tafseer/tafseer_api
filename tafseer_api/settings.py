@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'quran_text',
     'quran_tafseer',
     'docs',
+    'opbeat.contrib.django',
 ]
 
 PRE_MIDDLEWARE = env.list('PRE_MIDDLEWARE', default=[])
@@ -108,6 +109,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+OPBEAT = env.dict('OPBEAT', default={})
 
 REST_FRAMEWORK_RENDERER = env.list('REST_FRAMEWORK_RENDERER', default=[])
 
