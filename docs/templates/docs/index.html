@@ -1,11 +1,15 @@
 {% extends "_base.html" %}
 {% load i18n %}
+{% load staticfiles %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_language_info for LANGUAGE_CODE as lang %}
 {% get_available_languages as LANGUAGES %}
 {% get_current_language_bidi as RTL %}
 {% block title %}
 {% trans "Quran Tafseer API - Documentation" %}
+{% endblock %}
+{% block style %}
+<link href="{% static 'css/prism.css' %}" rel="stylesheet">
 {% endblock %}
 {% block container %}
 <div class="jumbotron" id="home">
@@ -24,7 +28,7 @@
                 <li><a href="#sura-list">{% trans "Chapter List" %}</a></li>
                 <li><a href="#ayah-details">{% trans "Verse Details" %}</a></li>
                 <li><a href="#tafseer-list">{% trans "Tafseer List" %}</a></li>
-                <li><a href="#ayah-tafseer">{% trans "Ayah's Tafseer" %}</a></li>
+                <li><a href="#ayah-tafseer">{% trans "Verse Tafseer" %}</a></li>
             </ul>
         </nav>
     </div>
@@ -140,7 +144,7 @@
                 </div>
                 <div class="col-md-9">
                     <code>
-                        <a href="https://api.quran-tafseer.com/quran/1/1">api.quran-tafseer.com/quran/{sura_number}/{ayah_number}</a>
+                        <a href="http://api.quran-tafseer.com/quran/1/1">api.quran-tafseer.com/quran/{sura_number}/{ayah_number}</a>
                     </code>
                 </div>
             </div>
@@ -221,7 +225,7 @@
                 </div>
                 <div class="col-md-9">
                     <code>
-                        <a href="https://api.quran-tafseer.com/tafseer/">api.quran-tafseer.com/tafseer</a>
+                        <a href="http://api.quran-tafseer.com/tafseer/">api.quran-tafseer.com/tafseer</a>
                     </code>
                 </div>
             </div>
@@ -297,7 +301,7 @@
                 </div>
                 <div class="col-md-9">
                     <code>
-                       <a href="https://api.quran-tafseer.com/tafseer/1/1/1">api.quran-tafseer.com/tafseer/{tafseer_id}/{sura_number}/{ayah_number}</a>
+                       <a href="http://api.quran-tafseer.com/tafseer/1/1/1">api.quran-tafseer.com/tafseer/{tafseer_id}/{sura_number}/{ayah_number}</a>
                     </code>
                 </div>
             </div>
@@ -353,9 +357,5 @@
 </div>
 {% endblock %}
 {% block scripts %}
-    <script>
-    $(function(){
-       $('body').scrollspy({target: '#sidebar'});
-    });
-    </script>
+<script src="{% static 'js/prism.js' %}"></script>
 {% endblock %}
