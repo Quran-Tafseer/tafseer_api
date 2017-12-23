@@ -39,7 +39,7 @@ class Ayah(models.Model):
     Model to hold chapters' text ot Verse "Ayat"
     """
     number = models.PositiveIntegerField(verbose_name=_('Number'))
-    sura = models.ForeignKey(Sura, related_name='ayat')
+    sura = models.ForeignKey(Sura, related_name='ayat', on_delete=models.CASCADE)
     text = models.TextField()
     objects = AyahManager()
 
