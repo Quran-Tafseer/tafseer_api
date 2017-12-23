@@ -12,9 +12,9 @@ to create one.
 
 ## How to contribute and help the project
 
-1. Report Bugs
+1. [Report Bugs](https://github.com/EmadMokhtar/tafseer_api/issues/new)
     * If you found a bug please report, it'll help the project to grow and improve.
-1. Suggest Ideas
+1. [Suggest Ideas](https://github.com/EmadMokhtar/tafseer_api/issues/new)
     * If you have an innovative idea you feel it'll be awesome to add to the API, please share.
 1. Use the API
     * Yes using the API will help the project, this is the reason I built this API 😉.
