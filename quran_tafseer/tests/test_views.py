@@ -28,3 +28,17 @@ class TestTafsserViews(TestCase):
         self.assertEqual(response.content.decode(), '{"tafseer_id":1,"tafseer_name":"simple",'
                                                     '"ayah_url":"/quran/1/1","ayah_number":1,'
                                                     '"text":"بسم الله الرحمن الرحيم"}')
+
+    def test_not_found_tafseer_404(self):
+        """
+        Test if API gets invalid tafseer id or (Ayah & Sura ids)
+        should return 404 NOT FUND status
+        """
+        tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 0,
+                                                           'sura_index': 0,
+                                                           'ayah_number': 0})
+        response = self.client.get(tafseer_text_url)
+
+        self.assertEqual(404, response.status_code)
+        self.assertEqual('{"detail":"Tafseer with provided id or with sura and ayah ids not found"}',
+                         response.content.decode())
