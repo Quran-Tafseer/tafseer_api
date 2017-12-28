@@ -6,7 +6,7 @@ Quran Tafseer REST APIs and Quran Text
 
 The idea is to create one REST API for all Quran Tafseer/Interpretation for developers.
 The idea came to me when I tried to search for REST API for Quran Tafseer/Interpretation I couldn't find one,
-and each Quran application web/mobile has its own Quran Tanfseer/Interpretation, so I thought it's good idea
+and each Quran application web/mobile has its own Quran Tafseer/Interpretation, so I thought it's a good idea
 to create one.
 
 
@@ -24,17 +24,43 @@ to create one.
     * Please find the client list below.
 1. [Donate](https://www.paypal.me/emadhabib/1)
     * You can help me in growing the project with any amount.
-1. Help in documentation translation. [TBD]
+1. Check [translation help](https://github.com/EmadMokhtar/tafseer_api/labels/translation%20help) label, and help in documentation translation.
+1. Check [help wanted](https://github.com/EmadMokhtar/tafseer_api/labels/help%20wanted) label, and help in developing the API.
 
+## Development Stack
+
+1. [Python](https://www.python.org/)
+1. [Django](https://www.djangoproject.com/)
+1. [Django REST Framework](http://www.django-rest-framework.org/)
+
+## How to run locally
+
+* Create a virtualenv
+    `mkvirtualenv tafsser_api`
+* Install dependencies
+    `pip install -r requirements/requirements_dev.txt`
+* Create .env file and add project settings
+
+|   Setting    |    Example     |
+| ------------- |:-------------:|
+|   DEBUG    |    DEBUG=True     |
+|   SECRET_KEY    |    SECRET_KEY=VeryVerySecret     |
+|   DATABASE_URL    |    DATABASE_URL=sqlite:///db.sqlite3     |
+
+
+* Run model migrations
+    `python manage.py migrate`
+* Run development server
+    `python manage.py runserver`
 
 ## Clients
 
 * [CSharp client](https://github.com/xh0/QuranTafseerCSharpClient) created by [Bassam Abd Elhamid](https://github.com/xh0)
 
 
-## Quran Tanfseer/Interpretation Sources
+## Quran Tafseer/Interpretation Sources
 
-|   Tanfseer    |   Soruce      |
+|   Tafseer    |   Soruce      |
 | ------------- |:-------------:|
 |التفسير الميسر| Tanzil.net |
 |تفسير الجلالي| Tanzil.net     |
