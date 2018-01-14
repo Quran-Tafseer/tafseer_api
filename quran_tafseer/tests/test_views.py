@@ -66,9 +66,9 @@ class TestTafsserViews(TestCase):
         self.assertEqual(response.content.decode(),
                          '[{"tafseer_id":1,"tafseer_name":"simple",'
                          '"ayah_url":"/quran/2/1'
-                         '","ayah_number":1, '
+                         '","ayah_number":1,'
                          '"text":"بسم الله الرحمن '
-                         'الرحيم"}, '
+                         'الرحيم"},'
                          '{"tafseer_id":1,"tafseer_name":"simple",'
                          '"ayah_url":"/quran/2/2","ayah_number":2,'
                          '"text":"ألم"}]')
