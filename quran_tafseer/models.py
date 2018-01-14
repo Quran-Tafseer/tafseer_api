@@ -18,7 +18,9 @@ class TafseerTextManager(models.Manager):
 
     def get_sura_tafseer(self, tafseer_id, sura_id):
         return self.filter(ayah__sura_id=sura_id,
-                           tafseer_id=tafseer_id)
+                           tafseer_id=tafseer_id).select_related('ayah',
+                                                                 'ayah__sura',
+                                                                 'tafseer')
 
     def get_ayah_tafseer(self, tafseer_id, sura_id, ayah_num):
         tafseer_text = self.get_sura_tafseer(tafseer_id, sura_id).filter(
