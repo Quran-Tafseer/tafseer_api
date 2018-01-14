@@ -27,3 +27,19 @@ class AyahTafseerView(generics.RetrieveAPIView):
                                                         ayah_number)
         except TafseerText.DoesNotExist:
             raise NotFound('Tafseer with provided id or with sura and ayah ids not found')
+
+
+class AyahTafseerRangeView(generics.ListAPIView):
+    serializer_class = TafseerTextSerializer
+    model = TafseerText
+
+    def get_queryset(self):
+        tafseer_id = self.kwargs['tafseer_id']
+        sura_index = self.kwargs['sura_index']
+        ayah_from = self.kwargs['ayah_from']
+        ayah_to = self.kwargs['ayah_to']
+        try:
+            qs = TafseerText.objects.get_ayah_tafseer_range(tafseer_id, sura_index, ayah_from, ayah_to)
+            return qs
+        except TafseerText.DoesNotExist:
+            raise NotFound('Tafseer with provided id, sura id, or range or ayah are not found')
