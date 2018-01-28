@@ -62,5 +62,11 @@ to create one.
 
 |   Tafseer    |   Soruce      |
 | ------------- |:-------------:|
-|التفسير الميسر| Tanzil.net |
-|تفسير الجلالي| Tanzil.net     |
+|التفسير الميسر| [Tanzil.net](http://tanzil.net/trans/) |
+|تفسير الجلالي| [Tanzil.net](http://tanzil.net/trans/)     |
+|تفسير السعدي| [Ayat](http://quran.ksu.edu.sa)|
+|تفسير ابن كثير| [Ayat](http://quran.ksu.edu.sa)|
+|تفسير الوسيط لطنطاوي| [Ayat](http://quran.ksu.edu.sa)|
+|تفسير البغوي| [Ayat](http://quran.ksu.edu.sa)|
+|تفسير القرطبي| [Ayat](http://quran.ksu.edu.sa)|
+|تفسير الطبري| [Ayat](http://quran.ksu.edu.sa)|
