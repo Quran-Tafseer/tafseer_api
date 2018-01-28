@@ -60,3 +60,9 @@ class TestTafseerTextManager(TestCase):
         self.assertEqual(2, ayah_tafseer_range.count())
         self.assertIn(self.tafseer_text_1, ayah_tafseer_range)
         self.assertIn(self.tafseer_text_2, ayah_tafseer_range)
+
+    def test_get_ayah_tafseer_range_with_wrong_range(self):
+        with self.assertRaises(TafseerText.DoesNotExist):
+            TafseerText.objects.get_ayah_tafseer_range(self.tafseer.pk,
+                                                       self.sura.pk,
+                                                       2, 1)

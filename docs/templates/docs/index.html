@@ -29,6 +29,7 @@
                 <li><a href="#ayah-details">{% trans "Verse Details" %}</a></li>
                 <li><a href="#tafseer-list">{% trans "Tafseer List" %}</a></li>
                 <li><a href="#ayah-tafseer">{% trans "Verse Tafseer" %}</a></li>
+                <li><a href="#ayah-tafseer-range">{% trans "Verse Tafseer Range" %}</a></li>
             </ul>
         </nav>
     </div>
@@ -83,7 +84,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul>
-                        <li><code><b>200 OK</b></code>: Returned list of Quran Chapters</li>
+                        <li><code><b>200 OK</b></code>: Returned list of Quran's chapters</li>
                     </ul>
                 </div>
             </div>
@@ -125,7 +126,7 @@
             </div>
             <div class="row">
                 <h4>{% trans "Description" %}</h4>
-                {% blocktrans %}API endpoint to get a text for specific Verse in Sura, you should pass <code>Sura number</code> and <code>Ayah number</code> as query parameter.{% endblocktrans %}
+                {% blocktrans %}API endpoint to get a text for specific Verse in Sura, you should pass <code>Sura number</code> and <code>Ayah number</code> as URL path parameter.{% endblocktrans %}
             </div>
             <div class="row">
                 <h4>{% trans "Request" %}</h4>
@@ -171,7 +172,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul>
-                        <li><code><b>200 OK</b></code>: Returned details of Quran verse</li>
+                        <li><code><b>200 OK</b></code>: Returned details of Qura'sn verse</li>
                         <li><code><b>404 Not Found</b></code>: Can't found verse with supplied <code>sura_number</code> and <code>ayah_number</code></li>
 
                     </ul>
@@ -248,7 +249,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul>
-                        <li><code><b>200 OK</b></code>: Returned list of Quran Tafseer</li>
+                        <li><code><b>200 OK</b></code>: Returned list of Quran's tafseers</li>
                     </ul>
                 </div>
             </div>
@@ -282,7 +283,7 @@
                 </div>
                 <div class="row">
                 <h4>{% trans "Description" %}</h4>
-                {% blocktrans %}API endpoint to get a specific tasfeer for verse in chapter, you should pass <code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as query parameter.{% endblocktrans %}
+                {% blocktrans %}API endpoint to get a specific tasfeer for verse in chapter, you should pass <code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as URL path parameter.{% endblocktrans %}
             </div>
             <div class="row">
                 <h4>{% trans "Request" %}</h4>
@@ -329,7 +330,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul>
-                        <li><code><b>200 OK</b></code>: Returned list of Quran Chapters</li>
+                        <li><code><b>200 OK</b></code>: Returned list of Quran verse's tafseer</li>
                         <li><code><b>404 NOT FOUND</b></code>: Can't find tafseer with id supplied or with chapter number and verse number</li>
                     </ul>
                 </div>
@@ -350,6 +351,127 @@
     "text": "هذه الحروف وغيرها من الحروف المقطَّعة في أوائل السور فيها إشارة إلى إعجاز القرآن؛ فقد وقع به تحدي المشركين، فعجزوا عن معارضته، وهو مركَّب من هذه الحروف التي تتكون منها لغة العرب. فدَلَّ عجز العرب عن الإتيان بمثله -مع أنهم أفصح الناس- على أن القرآن وحي من الله."
 }
                     </code>
+                </pre>
+            </div>
+        </div>
+        <div id="ayah-tafseer-range">
+            <div class="row">
+                 <div class="row">
+                    <div class="col-md-12">
+                        <h1>{% trans "Verse Tafseer Range Endpoint" %}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                <h4>{% trans "Description" %}</h4>
+                {% blocktrans %}API endpoint to get a specific tasfeer for range of verses in a chapter, you should pass <code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer List Endpoint</a>, <code>Sura number</code>, <code>Ayah number from</code>, and <code>Ayah number to</code> as URL path parameter.{% endblocktrans %}
+            </div>
+            <div class="row">
+                <h4>{% trans "Request" %}</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <b>HTTP Method</b>
+                </div>
+                <div class="col-md-9">
+                    <span class="label label-success">GET</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <b>URL</b>
+                </div>
+                <div class="col-md-9">
+                    <code>
+                       <a href="http://api.quran-tafseer.com/tafseer/1/1/1/6">api.quran-tafseer.com/tafseer/{tafseer_id}/{sura_number}/{ayah_number_from}/{ayah_number_to}</a>
+                    </code>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <b>URL Parameters</b>
+                </div>
+                <div class="col-md-9">
+                     <ul>
+                         <li><code>tafseer_id</code>: Tafseer Id</li>
+                        <li><code>sura_number</code>: Chapter Number</li>
+                        <li><code>ayah_number_from</code>: Start Verse Number Range</li>
+                        <li><code>ayah_number_to</code>: End Verse Number Range</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <h4>{% trans "Response" %}</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <b>{% trans "Status Codes" %}</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li><code><b>200 OK</b></code>: Returned list of Quran's verses tafseer according to the range</li>
+                        <li><code><b>404 NOT FOUND</b></code>:
+                            <ul>
+                                <li>Can't find tafseer with id supplied or with chapter number and verse number range.</li>
+                                <li>Wrong Verse numbers range (Replace start index with the end index).</li>
+                            </ul>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <b>{% trans "Body" %}</b>
+                </div>
+            </div>
+            <div class="row">
+                  <pre>
+                    <code class="language-json" lang="json">
+[
+    {
+        "tafseer_id": 1,
+        "tafseer_name": "التفسير الميسر",
+        "ayah_url": "/quran/1/1",
+        "ayah_number": 1,
+        "text": "سورة الفاتحة سميت هذه السورة بالفاتحة؛ لأنه يفتتح بها القرآن العظيم، وتسمى المثاني؛ لأنها تقرأ في كل ركعة، ولها أسماء أخر. أبتدئ قراءة القرآن باسم الله مستعينا به، (اللهِ) علم على الرب -تبارك وتعالى- المعبود بحق دون سواه، وهو أخص أسماء الله تعالى، ولا يسمى به غيره سبحانه. (الرَّحْمَنِ) ذي الرحمة العامة الذي وسعت رحمته جميع الخلق، (الرَّحِيمِ) بالمؤمنين، وهما اسمان من أسمائه تعالى، يتضمنان إثبات صفة الرحمة لله تعالى كما يليق بجلاله."
+    },
+    {
+        "tafseer_id": 1,
+        "tafseer_name": "التفسير الميسر",
+        "ayah_url": "/quran/1/2",
+        "ayah_number": 2,
+        "text": "(الحَمْدُ للهِ رَبِّ العَالَمِينَ) الثناء على الله بصفاته التي كلُّها أوصاف كمال، وبنعمه الظاهرة والباطنة، الدينية والدنيوية، وفي ضمنه أَمْرٌ لعباده أن يحمدوه، فهو المستحق له وحده، وهو سبحانه المنشئ للخلق، القائم بأمورهم، المربي لجميع خلقه بنعمه، ولأوليائه بالإيمان والعمل الصالح."
+    },
+    {
+        "tafseer_id": 1,
+        "tafseer_name": "التفسير الميسر",
+        "ayah_url": "/quran/1/3",
+        "ayah_number": 3,
+        "text": "(الرَّحْمَنِ) الذي وسعت رحمته جميع الخلق، (الرَّحِيمِ)، بالمؤمنين، وهما اسمان من أسماء الله تعالى."
+    },
+    {
+        "tafseer_id": 1,
+        "tafseer_name": "التفسير الميسر",
+        "ayah_url": "/quran/1/4",
+        "ayah_number": 4,
+        "text": "وهو سبحانه وحده مالك يوم القيامة، وهو يوم الجزاء على الأعمال. وفي قراءة المسلم لهذه الآية في كل ركعة من صلواته تذكير له باليوم الآخر، وحثٌّ له على الاستعداد بالعمل الصالح، والكف عن المعاصي والسيئات."
+    },
+    {
+        "tafseer_id": 1,
+        "tafseer_name": "التفسير الميسر",
+        "ayah_url": "/quran/1/5",
+        "ayah_number": 5,
+        "text": "إنا نخصك وحدك بالعبادة، ونستعين بك وحدك في جميع أمورنا، فالأمر كله بيدك، لا يملك منه أحد مثقال ذرة. وفي هذه الآية دليل على أن العبد لا يجوز له أن يصرف شيئًا من أنواع العبادة كالدعاء والاستغاثة والذبح والطواف إلا لله وحده، وفيها شفاء القلوب من داء التعلق بغير الله، ومن أمراض الرياء والعجب، والكبرياء."
+    },
+    {
+        "tafseer_id": 1,
+        "tafseer_name": "التفسير الميسر",
+        "ayah_url": "/quran/1/6",
+        "ayah_number": 6,
+        "text": "دُلَّنا، وأرشدنا، ووفقنا إلى الطريق المستقيم، وثبتنا عليه حتى نلقاك، وهو الإسلام، الذي هو الطريق الواضح الموصل إلى رضوان الله وإلى جنته، الذي دلّ عليه خاتم رسله وأنبيائه محمد صلى الله عليه وسلم، فلا سبيل إلى سعادة العبد إلا بالاستقامة عليه."
+    }
+]                    </code>
                 </pre>
             </div>
         </div>

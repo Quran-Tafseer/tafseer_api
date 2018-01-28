@@ -18,7 +18,9 @@ class TafseerTextManager(models.Manager):
 
     def get_sura_tafseer(self, tafseer_id, sura_id):
         return self.filter(ayah__sura_id=sura_id,
-                           tafseer_id=tafseer_id)
+                           tafseer_id=tafseer_id).select_related('ayah',
+                                                                 'ayah__sura',
+                                                                 'tafseer')
 
     def get_ayah_tafseer(self, tafseer_id, sura_id, ayah_num):
         tafseer_text = self.get_sura_tafseer(tafseer_id, sura_id).filter(
@@ -28,11 +30,14 @@ class TafseerTextManager(models.Manager):
             raise TafseerText.DoesNotExist
         return tafseer_text
 
-    def get_ayah_tafseer_range(self, tafseer_id, sura_id, ayah_from_num, ayah_to_num):
-        return self.get_sura_tafseer(tafseer_id, sura_id).filter(
-            ayah__id__gte=ayah_from_num,
-            ayah__id__lte=ayah_to_num
+    def get_ayah_tafseer_range(self, tafseer_id, sura_id, ayah_from, ayah_to):
+        tafseer_text = self.get_sura_tafseer(tafseer_id, sura_id).filter(
+            ayah__id__gte=ayah_from,
+            ayah__id__lte=ayah_to
         )
+        if not tafseer_text:
+            raise TafseerText.DoesNotExist
+        return tafseer_text
 
 
 class TafseerText(models.Model):
