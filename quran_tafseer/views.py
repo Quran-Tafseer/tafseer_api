@@ -10,7 +10,7 @@ from .serializers import TafseerSerializer, TafseerTextSerializer
 
 class TafseerView(generics.ListAPIView):
     serializer_class = TafseerSerializer
-    queryset = Tafseer.objects.all()
+    queryset = Tafseer.objects.all().order_by('pk')
 
 
 class AyahTafseerView(generics.RetrieveAPIView):
