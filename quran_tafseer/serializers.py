@@ -9,7 +9,7 @@ class TafseerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tafseer
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'language', 'author', 'book_name']
 
 
 class TafseerTextSerializer(serializers.ModelSerializer):
