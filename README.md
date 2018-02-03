@@ -72,7 +72,6 @@ to create one.
 |تفسير الطبري| [Ayat](http://quran.ksu.edu.sa)|  العربية 
 Arberry | [Tanzil.net](http://tanzil.net/trans/) | English |
 Yusuf Ali | [Tanzil.net](http://tanzil.net/trans/) |English |
-Keyzer | [Tanzil.net](http://tanzil.net/trans/) |English |
 Keyzer | [Tanzil.net](http://tanzil.net/trans/) | Dutch |
 Leemhuis | [Tanzil.net](http://tanzil.net/trans/) | Dutch |
 Siregar | [Tanzil.net](http://tanzil.net/trans/) | Dutch |
