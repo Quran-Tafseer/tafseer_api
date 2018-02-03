@@ -9,6 +9,12 @@ from quran_text.models import Ayah
 
 class Tafseer(models.Model):
     name = models.CharField(max_length=20, verbose_name=_('Name'))
+    author = models.CharField(max_length=50, verbose_name=_('Author'),
+                              blank=True, null=True)
+    book_name = models.CharField(max_length=50, verbose_name=_('Book Name'),
+                                 blank=True, null=True)
+    language = models.CharField(max_length=2, verbose_name=_('Language'),
+                                blank=True, null=True)
 
     def __str__(self):
         return self.name
