@@ -60,13 +60,19 @@ to create one.
 
 ## Quran Tafseer/Interpretation Sources
 
-|   Tafseer    |   Soruce      |
-| ------------- |:-------------:|
-|التفسير الميسر| [Tanzil.net](http://tanzil.net/trans/) |
-|تفسير الجلالي| [Tanzil.net](http://tanzil.net/trans/)     |
-|تفسير السعدي| [Ayat](http://quran.ksu.edu.sa)|
-|تفسير ابن كثير| [Ayat](http://quran.ksu.edu.sa)|
-|تفسير الوسيط لطنطاوي| [Ayat](http://quran.ksu.edu.sa)|
-|تفسير البغوي| [Ayat](http://quran.ksu.edu.sa)|
-|تفسير القرطبي| [Ayat](http://quran.ksu.edu.sa)|
-|تفسير الطبري| [Ayat](http://quran.ksu.edu.sa)|
+|   Tafseer    |   Soruce      | Language |
+| ------------- |:-------------:|---------|
+|التفسير الميسر| [Tanzil.net](http://tanzil.net/trans/) | العربية |
+|تفسير الجلالي| [Tanzil.net](http://tanzil.net/trans/)     | العربية 
+|تفسير السعدي| [Ayat](http://quran.ksu.edu.sa)| العربية 
+|تفسير ابن كثير| [Ayat](http://quran.ksu.edu.sa)| العربية 
+|تفسير الوسيط لطنطاوي| [Ayat](http://quran.ksu.edu.sa)| العربية 
+|تفسير البغوي| [Ayat](http://quran.ksu.edu.sa)| العربية 
+|تفسير القرطبي| [Ayat](http://quran.ksu.edu.sa)| العربية 
+|تفسير الطبري| [Ayat](http://quran.ksu.edu.sa)|  العربية 
+Arberry | [Tanzil.net](http://tanzil.net/trans/) | English |
+Yusuf Ali | [Tanzil.net](http://tanzil.net/trans/) |English |
+Keyzer | [Tanzil.net](http://tanzil.net/trans/) |English |
+Keyzer | [Tanzil.net](http://tanzil.net/trans/) | Dutch |
+Leemhuis | [Tanzil.net](http://tanzil.net/trans/) | Dutch |
+Siregar | [Tanzil.net](http://tanzil.net/trans/) | Dutch |
