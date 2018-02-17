@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party Apps
     'rest_framework',
+    'rest_framework_tracking',
     # Internal Apps
     'quran_text',
     'quran_tafseer',
