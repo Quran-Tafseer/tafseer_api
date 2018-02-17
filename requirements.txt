@@ -1,5 +1,6 @@
 Django==1.11.7
 djangorestframework==3.7.3
+drf-tracking==1.4.0
 pytz==2017.2
 django-environ==0.4.4
 django-filter==1.0.4
