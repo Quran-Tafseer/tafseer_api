@@ -2,12 +2,13 @@
 from __future__ import unicode_literals
 
 from rest_framework import generics
+from rest_framework_tracking.mixins import LoggingMixin
 
 from .models import Ayah, Sura
 from .serializers import AyahSerializer, SuraSerializer
 
 
-class SuraListView(generics.ListAPIView):
+class SuraListView(LoggingMixin, generics.ListAPIView):
     """
     Returns a full list of quran's sura (chapters) sorted by the index
     """
@@ -15,7 +16,7 @@ class SuraListView(generics.ListAPIView):
     queryset = Sura.objects.all()
 
 
-class AyahTextView(generics.RetrieveAPIView):
+class AyahTextView(LoggingMixin, generics.RetrieveAPIView):
     """
     Returns Quran text for certain verse (Ayah) in a chapter (Sura)
     """

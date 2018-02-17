@@ -3,17 +3,18 @@ from __future__ import unicode_literals
 
 from rest_framework import generics
 from rest_framework.exceptions import NotFound
+from rest_framework_tracking.mixins import LoggingMixin
 
 from .models import Tafseer, TafseerText
 from .serializers import TafseerSerializer, TafseerTextSerializer
 
 
-class TafseerView(generics.ListAPIView):
+class TafseerView(LoggingMixin, generics.ListAPIView):
     serializer_class = TafseerSerializer
     queryset = Tafseer.objects.all().order_by('pk')
 
 
-class AyahTafseerView(generics.RetrieveAPIView):
+class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
     serializer_class = TafseerTextSerializer
     model = TafseerText
 
@@ -26,10 +27,11 @@ class AyahTafseerView(generics.RetrieveAPIView):
                                                         sura_index,
                                                         ayah_number)
         except TafseerText.DoesNotExist:
-            raise NotFound('Tafseer with provided id or with sura and ayah ids not found')
+            raise NotFound('Tafseer with provided id or '
+                           'with sura and ayah ids not found')
 
 
-class AyahTafseerRangeView(generics.ListAPIView):
+class AyahTafseerRangeView(LoggingMixin, generics.ListAPIView):
     serializer_class = TafseerTextSerializer
     model = TafseerText
 
@@ -39,7 +41,10 @@ class AyahTafseerRangeView(generics.ListAPIView):
         ayah_from = self.kwargs['ayah_from']
         ayah_to = self.kwargs['ayah_to']
         try:
-            qs = TafseerText.objects.get_ayah_tafseer_range(tafseer_id, sura_index, ayah_from, ayah_to)
+            qs = TafseerText.objects.get_ayah_tafseer_range(tafseer_id,
+                                                            sura_index,
+                                                            ayah_from, ayah_to)
             return qs
         except TafseerText.DoesNotExist:
-            raise NotFound('Tafseer with provided id, sura id, or range or ayah are not found')
+            raise NotFound('Tafseer with provided id, sura id, or range or '
+                           'ayah are not found')

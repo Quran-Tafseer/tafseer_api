@@ -4,7 +4,6 @@ from model_mommy import mommy
 from rest_framework.test import APITestCase
 
 from ..models import Ayah, Sura
-from ..serializers import SuraSerializer
 
 
 class TestQuranTextView(APITestCase):

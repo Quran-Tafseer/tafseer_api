@@ -1,6 +1,8 @@
 import os
-import environ
+
 from django.utils.translation import ugettext_lazy as _
+
+import environ
 
 # Initialize environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party Apps
     'rest_framework',
+    'rest_framework_tracking',
     # Internal Apps
     'quran_text',
     'quran_tafseer',

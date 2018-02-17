@@ -1,6 +1,6 @@
 from django.conf.urls import include, url
-from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib import admin
 
 urlpatterns = [
     url(r'^quran/', include('quran_text.urls')),
