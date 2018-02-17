@@ -1,6 +1,6 @@
 from django.test import TestCase
-from model_mommy import mommy
 
+from model_mommy import mommy
 from quran_tafseer.serializers import TafseerSerializer, TafseerTextSerializer
 
 
@@ -30,5 +30,3 @@ class TestTafseerTextSeriazlier(TestCase):
                                            'ayah_url': '/quran/1/1',
                                            'ayah_number': 1,
                                            'text': 'بسم الله الرحمن الرحيم'})
-
-

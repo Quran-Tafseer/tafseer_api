@@ -10,4 +10,5 @@ class TestAppConfig(TestCase):
         self.assertEqual('quran_tafseer', self.app_config.name)
 
     def test_app_verbose_name(self):
-        self.assertEqual('Quran Tafseer REST API', self.app_config.verbose_name)
+        self.assertEqual('Quran Tafseer REST API',
+                         self.app_config.verbose_name)

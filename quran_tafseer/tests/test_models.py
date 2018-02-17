@@ -1,6 +1,6 @@
 from django.test import TestCase
-from model_mommy import mommy
 
+from model_mommy import mommy
 from quran_tafseer.models import Tafseer, TafseerText
 
 
@@ -54,9 +54,10 @@ class TestTafseerTextManager(TestCase):
         self.assertEqual(self.tafseer_text_1, ayah_tafseer)
 
     def test_get_ayah_tafseer_range(self):
-        ayah_tafseer_range = TafseerText.objects.get_ayah_tafseer_range(self.tafseer.pk,
-                                                                        self.sura.pk,
-                                                                        1, 2)
+        ayah_tafseer_range = TafseerText.objects. \
+            get_ayah_tafseer_range(self.tafseer.pk,
+                                   self.sura.pk,
+                                   1, 2)
         self.assertEqual(2, ayah_tafseer_range.count())
         self.assertIn(self.tafseer_text_1, ayah_tafseer_range)
         self.assertIn(self.tafseer_text_2, ayah_tafseer_range)

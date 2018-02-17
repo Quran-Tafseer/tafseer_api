@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView, RedirectView
 from django.urls import reverse_lazy
+from django.views.generic import RedirectView, TemplateView
 
 
 class DocView(TemplateView):

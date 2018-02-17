@@ -1,6 +1,8 @@
 import os
-import environ
+
 from django.utils.translation import ugettext_lazy as _
+
+import environ
 
 # Initialize environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -26,7 +26,8 @@ class AyahTafseerView(generics.RetrieveAPIView):
                                                         sura_index,
                                                         ayah_number)
         except TafseerText.DoesNotExist:
-            raise NotFound('Tafseer with provided id or with sura and ayah ids not found')
+            raise NotFound('Tafseer with provided id or '
+                           'with sura and ayah ids not found')
 
 
 class AyahTafseerRangeView(generics.ListAPIView):
@@ -39,7 +40,10 @@ class AyahTafseerRangeView(generics.ListAPIView):
         ayah_from = self.kwargs['ayah_from']
         ayah_to = self.kwargs['ayah_to']
         try:
-            qs = TafseerText.objects.get_ayah_tafseer_range(tafseer_id, sura_index, ayah_from, ayah_to)
+            qs = TafseerText.objects.get_ayah_tafseer_range(tafseer_id,
+                                                            sura_index,
+                                                            ayah_from, ayah_to)
             return qs
         except TafseerText.DoesNotExist:
-            raise NotFound('Tafseer with provided id, sura id, or range or ayah are not found')
+            raise NotFound('Tafseer with provided id, sura id, or range or '
+                           'ayah are not found')
