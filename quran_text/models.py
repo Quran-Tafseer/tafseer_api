@@ -44,6 +44,12 @@ class Ayah(models.Model):
     text = models.TextField()
     objects = AyahManager()
 
+    def next_ayah(self):
+        try:
+            return Ayah.objects.get(pk=self.pk+1)
+        except Ayah.DoesNotExist:
+            return None
+
     def __str__(self):
         return '{ayah.sura.index} - {ayah.number}'.format(ayah=self)
 
