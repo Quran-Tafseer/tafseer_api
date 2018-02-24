@@ -20,11 +20,19 @@ class TestAyahModel(TestCase):
         self.sura = mommy.make('quran_text.sura', name='Al-Fateha', index=1)
         self.ayah = mommy.make('quran_text.ayah', number=1, sura=self.sura,
                                text='بسم الله الرحمن الرحيم')
-        mommy.make('quran_text.ayah', number=2, sura=self.sura,
-                   text='الحمدلله رب العالمين')
+        self.ayah_2 = mommy.make('quran_text.ayah', number=2, sura=self.sura,
+                                 text='الحمدلله رب العالمين')
 
     def test_str(self):
         self.assertEqual('1 - 1', str(self.ayah))
+
+    def test_get_next_ayah(self):
+        next_ayah = self.ayah.next_ayah()
+        self.assertEqual(next_ayah, self.ayah_2)
+
+    def test_get_next_ayah_last_ayah(self):
+        next_ayah = self.ayah_2.next_ayah()
+        self.assertIsNone(next_ayah)
 
 
 class TestAyahModelManager(TestCase):
