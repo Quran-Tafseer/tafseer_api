@@ -4,7 +4,7 @@ from django.urls import reverse
 from model_mommy import mommy
 
 
-class TestTafsserViews(TestCase):
+class TestTafseerViews(TestCase):
     def setUp(self):
         self.sura = mommy.make('quran_text.sura', name='Al-Bakarah', index=2)
         self.ayah = mommy.make('quran_text.ayah', number=1, sura=self.sura,
