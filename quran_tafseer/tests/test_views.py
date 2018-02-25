@@ -17,6 +17,9 @@ class TestTafseerViews(TestCase):
         self.tafseer_text = mommy.make('quran_tafseer.TafseerText',
                                        ayah=self.ayah, tafseer=self.tafseer,
                                        text='بسم الله الرحمن الرحيم')
+        self.tafseer_text_2 = mommy.make('quran_tafseer.TafseerText',
+                                         ayah=self.ayah_2, tafseer=self.tafseer,
+                                         text='الحمد لله رب العالمين')
 
     def test_tafseer_view(self):
         tafseer_url = reverse('tafseer-list')
@@ -38,6 +41,18 @@ class TestTafseerViews(TestCase):
                          '"text":"بسم الله الرحمن الرحيم"}')
         self.assertEqual(response['X-Next-Ayah'], "2:2")
 
+    def test_tafseer_text_with_no_next_ayah_view(self):
+        tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 1,
+                                                           'sura_index': 2,
+                                                           'ayah_number': 2})
+        response = self.client.get(tafseer_text_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content.decode(),
+                         '{"tafseer_id":1,"tafseer_name":"simple",'
+                         '"ayah_url":"/quran/2/2","ayah_number":2,'
+                         '"text":"الحمد لله رب العالمين"}')
+        self.assertNotIn('x-next-ayah', response)
+
     def test_not_found_tafseer_404(self):
         """
         Test if API gets invalid tafseer id or (Ayah & Sura ids)
@@ -54,16 +69,12 @@ class TestTafseerViews(TestCase):
             'ayah ids not found"}',
             response.content.decode())
         with self.assertRaises(KeyError):
-            response['X-Next-Ayah']
+            self.assertIsNotNone(response['X-Next-Ayah'])
 
     def test_get_tafseer_range(self):
         """
         Test getting the tafseer in the same sura but with a range of verses
         """
-        # Add more ayah and its tafseer
-        mommy.make('quran_tafseer.TafseerText',
-                   ayah=self.ayah_2, tafseer=self.tafseer,
-                   text='ألم')
         tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 1,
                                                            'sura_index': 2,
                                                            'ayah_from': 1,
@@ -78,7 +89,7 @@ class TestTafseerViews(TestCase):
                          'الرحيم"},'
                          '{"tafseer_id":1,"tafseer_name":"simple",'
                          '"ayah_url":"/quran/2/2","ayah_number":2,'
-                         '"text":"ألم"}]')
+                         '"text":"الحمد لله رب العالمين"}]')
 
     def test_get_tafseer_range_with_wrong_numbers(self):
         """

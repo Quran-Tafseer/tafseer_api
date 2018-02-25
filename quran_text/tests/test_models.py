@@ -28,6 +28,7 @@ class TestAyahModel(TestCase):
 
     def test_get_next_ayah(self):
         next_ayah = self.ayah.next_ayah()
+        self.assertIsNotNone(next_ayah)
         self.assertEqual(next_ayah, self.ayah_2)
 
     def test_get_next_ayah_last_ayah(self):
