@@ -17,7 +17,7 @@ class TafseerView(LoggingMixin, generics.ListAPIView):
 class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
     serializer_class = TafseerTextSerializer
     model = TafseerText
-    next_ayah = {}
+    next_ayah = None
 
     def get_object(self):
         tafseer_id = self.kwargs['tafseer_id']
@@ -25,8 +25,8 @@ class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
         ayah_number = self.kwargs['ayah_number']
         try:
             ayah_tafseer = TafseerText.objects.get_ayah_tafseer(tafseer_id,
-                                                        sura_index,
-                                                        ayah_number)
+                                                                sura_index,
+                                                                ayah_number)
             next_ayah = ayah_tafseer.ayah.next_ayah()
             if next_ayah is not None:
                 self.next_ayah = {'ayah_number': next_ayah.number,
@@ -37,10 +37,12 @@ class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
                            'with sura and ayah ids not found')
 
     def finalize_response(self, request, response, *args, **kwargs):
-        response = super().finalize_response(request, response, *args, **kwargs)
+        response = super().finalize_response(request, response, *args,
+                                             **kwargs)
         if self.next_ayah:
-            response['X-Next-Ayah'] = "{}:{}".format(self.next_ayah['sura_number'],
-                                                     self.next_ayah['ayah_number'])
+            response['X-Next-Ayah'] = "{}:{}".format(
+                self.next_ayah['sura_number'],
+                self.next_ayah['ayah_number'])
         return response
 
 
