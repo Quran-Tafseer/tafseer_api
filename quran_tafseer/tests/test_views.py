@@ -1,3 +1,4 @@
+import os
 from django.test import TestCase
 from django.urls import reverse
 
@@ -23,6 +24,17 @@ class TestTafseerViews(TestCase):
 
     def test_tafseer_view(self):
         tafseer_url = reverse('tafseer-list')
+        response = self.client.get(tafseer_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content.decode(),
+                         '[{"id":1,"name":"simple","language":"ar",'
+                         '"author":"random","book_name":"simple book"}]')
+
+    def test_tafseer_list_by_language(self):
+        mommy.make('quran_tafseer.Tafseer', name='simple',
+                   language='en', book_name='simple book',
+                   author='random')
+        tafseer_url = os.path.join(reverse('tafseer-list'), '?lang=ar')
         response = self.client.get(tafseer_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(),
