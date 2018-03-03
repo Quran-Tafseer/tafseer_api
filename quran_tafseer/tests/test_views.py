@@ -1,3 +1,4 @@
+import os
 from django.test import TestCase
 from django.urls import reverse
 
@@ -18,11 +19,23 @@ class TestTafseerViews(TestCase):
                                        ayah=self.ayah, tafseer=self.tafseer,
                                        text='بسم الله الرحمن الرحيم')
         self.tafseer_text_2 = mommy.make('quran_tafseer.TafseerText',
-                                         ayah=self.ayah_2, tafseer=self.tafseer,
+                                         ayah=self.ayah_2,
+                                         tafseer=self.tafseer,
                                          text='الحمد لله رب العالمين')
 
     def test_tafseer_view(self):
         tafseer_url = reverse('tafseer-list')
+        response = self.client.get(tafseer_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content.decode(),
+                         '[{"id":1,"name":"simple","language":"ar",'
+                         '"author":"random","book_name":"simple book"}]')
+
+    def test_tafseer_list_by_language(self):
+        mommy.make('quran_tafseer.Tafseer', name='simple',
+                   language='en', book_name='simple book',
+                   author='random')
+        tafseer_url = os.path.join(reverse('tafseer-list'), '?lang=ar')
         response = self.client.get(tafseer_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(),
@@ -56,7 +69,7 @@ class TestTafseerViews(TestCase):
     def test_not_found_tafseer_404(self):
         """
         Test if API gets invalid tafseer id or (Ayah & Sura ids)
-        should return 404 NOT FUND status
+        should return 404 NOT FOUND status
         """
         tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 0,
                                                            'sura_index': 0,

@@ -13,6 +13,13 @@ class TafseerView(LoggingMixin, generics.ListAPIView):
     serializer_class = TafseerSerializer
     queryset = Tafseer.objects.all().order_by('pk')
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        lang = self.request.query_params.get('lang', None)
+        if lang:
+            qs = qs.filter(language=lang)
+        return qs
+
 
 class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
     serializer_class = TafseerTextSerializer
