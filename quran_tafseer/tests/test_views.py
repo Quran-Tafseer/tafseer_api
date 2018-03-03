@@ -19,7 +19,8 @@ class TestTafseerViews(TestCase):
                                        ayah=self.ayah, tafseer=self.tafseer,
                                        text='بسم الله الرحمن الرحيم')
         self.tafseer_text_2 = mommy.make('quran_tafseer.TafseerText',
-                                         ayah=self.ayah_2, tafseer=self.tafseer,
+                                         ayah=self.ayah_2,
+                                         tafseer=self.tafseer,
                                          text='الحمد لله رب العالمين')
 
     def test_tafseer_view(self):
@@ -68,7 +69,7 @@ class TestTafseerViews(TestCase):
     def test_not_found_tafseer_404(self):
         """
         Test if API gets invalid tafseer id or (Ayah & Sura ids)
-        should return 404 NOT FUND status
+        should return 404 NOT FOUND status
         """
         tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 0,
                                                            'sura_index': 0,
