@@ -3,6 +3,7 @@ import os
 from django.utils.translation import ugettext_lazy as _
 
 import environ
+import rollbar
 
 # Initialize environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,6 +49,7 @@ MIDDLEWARE = PRE_MIDDLEWARE + [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ] + POST_MIDDLEWARE
 
 ROOT_URLCONF = 'tafseer_api.urls'
@@ -112,6 +114,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# REST framework
+
 REST_FRAMEWORK_RENDERER = env.list('REST_FRAMEWORK_RENDERER', default=[])
 
 REST_FRAMEWORK_PARSER = env.list('REST_FRAMEWORK_PARSER', default=[])
@@ -124,3 +128,12 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ] + REST_FRAMEWORK_PARSER
 }
+
+# Rollbar
+
+ROLLBAR = {
+    'access_token': 'e97f3ca1d5414a74a17cc8e54a5584e9',
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
+rollbar.init(**ROLLBAR)
