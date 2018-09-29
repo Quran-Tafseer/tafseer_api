@@ -3,6 +3,7 @@ import os
 from django.utils.translation import ugettext_lazy as _
 
 import environ
+import rollbar
 
 # Initialize environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,7 +34,6 @@ INSTALLED_APPS = [
     'quran_text',
     'quran_tafseer',
     'docs',
-    'opbeat.contrib.django',
 ]
 
 PRE_MIDDLEWARE = env.list('PRE_MIDDLEWARE', default=[])
@@ -49,6 +49,7 @@ MIDDLEWARE = PRE_MIDDLEWARE + [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ] + POST_MIDDLEWARE
 
 ROOT_URLCONF = 'tafseer_api.urls'
@@ -113,7 +114,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-OPBEAT = env.dict('OPBEAT', default={})
+# REST framework
 
 REST_FRAMEWORK_RENDERER = env.list('REST_FRAMEWORK_RENDERER', default=[])
 
@@ -127,3 +128,12 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     ] + REST_FRAMEWORK_PARSER
 }
+
+# Rollbar
+
+ROLLBAR = {
+    'access_token': env('ROLLBAR_ACCESS_TOKEN', default=''),
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
+rollbar.init(**ROLLBAR)
