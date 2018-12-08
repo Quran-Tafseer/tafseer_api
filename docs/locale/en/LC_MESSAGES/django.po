@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-20 20:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: docs/templates/docs/index.html:9
+msgid "Quran Tafseer API - Documentation"
+msgstr ""
+
+#: docs/templates/docs/index.html:17
+msgid "Quran Tafseer"
+msgstr ""
+
+#: docs/templates/docs/index.html:19
+msgid "Main Description"
+msgstr ""
+"This is an REST APIs fro Quran Tafseer or Translation, it's a place you'll "
+"find most of Quran Tafseer, and it's free to use."
+
+#: docs/templates/docs/index.html:27
+msgid "Home"
+msgstr ""
+
+#: docs/templates/docs/index.html:28
+msgid "Chapter List"
+msgstr ""
+
+#: docs/templates/docs/index.html:29
+msgid "Verse Details"
+msgstr ""
+
+#: docs/templates/docs/index.html:30
+msgid "Tafseer List"
+msgstr ""
+
+#: docs/templates/docs/index.html:31
+msgid "Verse Tafseer"
+msgstr ""
+
+#: docs/templates/docs/index.html:39
+msgid "Chapter List Endpoint"
+msgstr ""
+
+#: docs/templates/docs/index.html:43 docs/templates/docs/index.html:127
+#: docs/templates/docs/index.html:208 docs/templates/docs/index.html:284
+msgid "Description"
+msgstr ""
+
+#: docs/templates/docs/index.html:44
+msgid ""
+"Simple API endpoint to get a list of Quran chapters, the <code>index</code> "
+"can be use in other endpoints."
+msgstr ""
+
+#: docs/templates/docs/index.html:47 docs/templates/docs/index.html:131
+#: docs/templates/docs/index.html:212 docs/templates/docs/index.html:288
+msgid "Request"
+msgstr ""
+
+#: docs/templates/docs/index.html:76 docs/templates/docs/index.html:163
+#: docs/templates/docs/index.html:241 docs/templates/docs/index.html:321
+msgid "Response"
+msgstr ""
+
+#: docs/templates/docs/index.html:80 docs/templates/docs/index.html:167
+#: docs/templates/docs/index.html:245 docs/templates/docs/index.html:325
+msgid "Status Codes"
+msgstr ""
+
+#: docs/templates/docs/index.html:92 docs/templates/docs/index.html:182
+#: docs/templates/docs/index.html:257 docs/templates/docs/index.html:339
+msgid "Body"
+msgstr ""
+
+#: docs/templates/docs/index.html:123
+msgid "Verse Details Endpoint"
+msgstr ""
+
+#: docs/templates/docs/index.html:128
+msgid ""
+"API endpoint to get a text for specific Verse in Sura, you should pass "
+"<code>Sura number</code> and <code>Ayah number</code> as query parameter."
+msgstr ""
+
+#: docs/templates/docs/index.html:204
+msgid "Tafseer List Endpoint"
+msgstr ""
+
+#: docs/templates/docs/index.html:209
+msgid ""
+"Simple API endpoint to get a list of Quran tafseer available in <b>Tafseer "
+"API</b>, the <code>id</code> can be use in other endpoints."
+msgstr ""
+
+#: docs/templates/docs/index.html:280
+msgid "Verse Tafseer Endpoint"
+msgstr ""
+
+#: docs/templates/docs/index.html:285
+msgid ""
+"API endpoint to get a specific tasfeer for verse in chapter, you should pass "
+"<code>Tafseer Id</code> which can get from <a href='#tafseer-list'>Tafseer "
+"List Endpoint</a>, <code>Sura number</code>, and <code>Ayah number</code> as "
+"query parameter."
+msgstr ""
+
+#: docs/templates/menu.html:15
+msgid "Quran Tafseer API docs"
+msgstr ""

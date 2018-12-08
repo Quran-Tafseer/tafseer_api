@@ -9,14 +9,14 @@ class TafseerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tafseer
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'language', 'author', 'book_name']
 
 
 class TafseerTextSerializer(serializers.ModelSerializer):
     tafseer_id = serializers.IntegerField(source='tafseer.id')
     tafseer_name = serializers.CharField(source='tafseer.name')
     ayah_url = serializers.SerializerMethodField()
-    ayah_number = serializers.IntegerField(source='ayah.pk')
+    ayah_number = serializers.IntegerField(source='ayah.number')
 
     def get_ayah_url(self, obj):
         return reverse('ayah-detail', kwargs={'number': obj.ayah.number,

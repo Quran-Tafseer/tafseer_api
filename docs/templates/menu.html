@@ -1,0 +1,38 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language_bidi as RTL %}
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{% trans "Quran Tafseer API docs" %}</a>
+        </div>
+        <div id='navbar' class="navbar-collapse collapse">
+            <ul class="nav navbar-nav {% if RTL %} navbar-left {% else %} navbar-right {% endif %}">
+                <li class="dropdown {% if RTL %} navbar-left {% else %} navbar-right {% endif %}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ lang.name_local }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% for lang_code, lang_name in LANGUAGES %}
+                            {% language lang_code %}
+                            <li>
+                                <a href="/{{ lang_code }}{{ request.get_full_path|slice:'3:' }}"
+                                class="{% if lang_code == LANGUAGE_CODE %}selected{% endif %}" lang="{{ lang_code }}">
+                                                        {{ lang_name }}
+                                </a>
+                            </li>
+                            {% endlanguage %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>

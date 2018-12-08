@@ -1,0 +1,14 @@
+sudo: false
+
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+install:
+  - pip install -r requirements/requirements_dev.txt
+script:
+  - coverage run manage.py test
+
+after_success:
+    - codecov
