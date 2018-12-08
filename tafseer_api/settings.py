@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # 3rd party Apps
     'rest_framework',
     'rest_framework_tracking',
+    'silk',
     # Internal Apps
     'quran_text',
     'quran_tafseer',
@@ -42,6 +43,7 @@ POST_MIDDLEWARE = env.list('POST_MIDDLEWARE', default=[])
 
 MIDDLEWARE = PRE_MIDDLEWARE + [
     'django.middleware.security.SecurityMiddleware',
+    'silk.middleware.SilkyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,3 +139,14 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 rollbar.init(**ROLLBAR)
+
+
+# Django Silk
+SILKY_AUTHENTICATION = True  # User must login
+SILKY_AUTHORISATION = True  # User must have permissions
+SILKY_PERMISSIONS = lambda user: user.is_superuser
+SILKY_DYNAMIC_PROFILING = [
+    {'module': 'quran_tafseer.views', 'function': 'TafseerView.get'},
+    {'module': 'quran_tafseer.views', 'function': 'AyahTafseerView.get'},
+    {'module': 'quran_tafseer.views', 'function': 'AyahTafseerRangeView.get'},
+]

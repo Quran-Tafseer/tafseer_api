@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
+    url(r'^silk/', include('silk.urls', namespace='silk')),  # Django Silk URLs
     ]
 
 urlpatterns += i18n_patterns(url(r'^', include('docs.urls')))
