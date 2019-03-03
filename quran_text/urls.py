@@ -1,10 +1,12 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(r'^$', view=views.SuraListView.as_view(), name='sura-list'),
-    url(r'^(?P<sura_num>[0-9]+)/(?P<number>[0-9]+)$',
-        view=views.AyahTextView.as_view(), name='ayah-detail'),
-
+    path('',
+         view=views.SuraListView.as_view(), name='sura-list'),
+    path('<int:sura_num>/<int:number>/',
+         view=views.AyahTextView.as_view(), name='ayah-detail'),
+    path('<int:sura_num>/<int:number>',
+         view=views.AyahTextView.as_view()),
 ]

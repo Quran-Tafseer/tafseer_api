@@ -27,6 +27,6 @@ class TestTafseerTextSeriazlier(TestCase):
         serializer = TafseerTextSerializer(self.tafseer_text)
         self.assertEqual(serializer.data, {'tafseer_id': 1,
                                            'tafseer_name': 'simple',
-                                           'ayah_url': '/quran/1/1',
+                                           'ayah_url': '/quran/1/1/',
                                            'ayah_number': 1,
                                            'text': 'بسم الله الرحمن الرحيم'})

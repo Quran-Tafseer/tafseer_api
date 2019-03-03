@@ -50,7 +50,7 @@ class TestTafseerViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(),
                          '{"tafseer_id":1,"tafseer_name":"simple",'
-                         '"ayah_url":"/quran/2/1","ayah_number":1,'
+                         '"ayah_url":"/quran/2/1/","ayah_number":1,'
                          '"text":"بسم الله الرحمن الرحيم"}')
         self.assertEqual(response['X-Next-Ayah'], "2:2")
 
@@ -62,7 +62,7 @@ class TestTafseerViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(),
                          '{"tafseer_id":1,"tafseer_name":"simple",'
-                         '"ayah_url":"/quran/2/2","ayah_number":2,'
+                         '"ayah_url":"/quran/2/2/","ayah_number":2,'
                          '"text":"الحمد لله رب العالمين"}')
         self.assertNotIn('x-next-ayah', response)
 
@@ -88,20 +88,20 @@ class TestTafseerViews(TestCase):
         """
         Test getting the tafseer in the same sura but with a range of verses
         """
-        tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 1,
-                                                           'sura_index': 2,
-                                                           'ayah_from': 1,
-                                                           'ayah_to': 2})
+        tafseer_text_url = reverse('ayah-tafseer-range', kwargs={'tafseer_id': 1,
+                                                                 'sura_index': 2,
+                                                                 'ayah_from': 1,
+                                                                 'ayah_to': 2})
         response = self.client.get(tafseer_text_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(),
                          '[{"tafseer_id":1,"tafseer_name":"simple",'
-                         '"ayah_url":"/quran/2/1'
+                         '"ayah_url":"/quran/2/1/'
                          '","ayah_number":1,'
                          '"text":"بسم الله الرحمن '
                          'الرحيم"},'
                          '{"tafseer_id":1,"tafseer_name":"simple",'
-                         '"ayah_url":"/quran/2/2","ayah_number":2,'
+                         '"ayah_url":"/quran/2/2/","ayah_number":2,'
                          '"text":"الحمد لله رب العالمين"}]')
 
     def test_get_tafseer_range_with_wrong_numbers(self):
@@ -112,9 +112,9 @@ class TestTafseerViews(TestCase):
         mommy.make('quran_tafseer.TafseerText',
                    ayah=self.ayah_2, tafseer=self.tafseer,
                    text='ألم')
-        tafseer_text_url = reverse('ayah-tafseer', kwargs={'tafseer_id': 1,
-                                                           'sura_index': 2,
-                                                           'ayah_from': 2,
-                                                           'ayah_to': 1})
+        tafseer_text_url = reverse('ayah-tafseer-range', kwargs={'tafseer_id': 1,
+                                                                 'sura_index': 2,
+                                                                 'ayah_from': 2,
+                                                                 'ayah_to': 1})
         response = self.client.get(tafseer_text_url)
         self.assertEqual(response.status_code, 404)
