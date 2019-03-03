@@ -47,8 +47,8 @@ class TafseerTextManager(models.Manager):
 
 
 class TafseerText(models.Model):
-    tafseer = models.ForeignKey(Tafseer)
-    ayah = models.ForeignKey(Ayah)
+    tafseer = models.ForeignKey(Tafseer, on_delete=models.CASCADE)
+    ayah = models.ForeignKey(Ayah, on_delete=models.CASCADE)
     text = models.TextField(verbose_name=_('Tafseer'))
     objects = TafseerTextManager()
 
