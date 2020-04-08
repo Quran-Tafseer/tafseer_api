@@ -4,7 +4,7 @@ chardet==3.0.4
 codecov==2.0.10
 configparser==3.5.0
 coverage==4.4.2
-Django==2.1.4
+Django==2.2.10
 django-environ==0.4.4
 django-filter==1.0.4
 django-silk==1.1.0
