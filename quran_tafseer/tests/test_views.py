@@ -1,6 +1,9 @@
+import json
 import os
 from django.test import TestCase
 from django.urls import reverse
+
+from rest_framework import status
 
 from model_mommy import mommy
 
@@ -88,10 +91,11 @@ class TestTafseerViews(TestCase):
         """
         Test getting the tafseer in the same sura but with a range of verses
         """
-        tafseer_text_url = reverse('ayah-tafseer-range', kwargs={'tafseer_id': 1,
-                                                                 'sura_index': 2,
-                                                                 'ayah_from': 1,
-                                                                 'ayah_to': 2})
+        tafseer_text_url = reverse('ayah-tafseer-range',
+                                   kwargs={'tafseer_id': 1,
+                                           'sura_index': 2,
+                                           'ayah_from': 1,
+                                           'ayah_to': 2})
         response = self.client.get(tafseer_text_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(),
@@ -112,9 +116,36 @@ class TestTafseerViews(TestCase):
         mommy.make('quran_tafseer.TafseerText',
                    ayah=self.ayah_2, tafseer=self.tafseer,
                    text='ألم')
-        tafseer_text_url = reverse('ayah-tafseer-range', kwargs={'tafseer_id': 1,
-                                                                 'sura_index': 2,
-                                                                 'ayah_from': 2,
-                                                                 'ayah_to': 1})
+        tafseer_text_url = reverse('ayah-tafseer-range',
+                                   kwargs={'tafseer_id': 1,
+                                           'sura_index': 2,
+                                           'ayah_from': 2,
+                                           'ayah_to': 1})
         response = self.client.get(tafseer_text_url)
         self.assertEqual(response.status_code, 404)
+
+    def test_tafseer_book_details(self):
+        """
+        Test getting the Quran Tafseer book details
+        """
+        tafseer_book_url = reverse('tafseer-book-details',
+                                   kwargs={'tafseer_id': 1})
+        response = self.client.get(tafseer_book_url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        print(response.content.decode())
+        self.assertDictEqual(json.loads(response.content.decode()),
+                             {'id': 1,
+                              'name': 'simple',
+                              'language': 'ar',
+                              'book_name': 'simple book',
+                              'author': 'random'})
+
+    def test_tafseer_book_details_not_found(self):
+        """
+        Test getting the Quran Tafseer book details with invalid ID. The API
+        should return 404.
+        """
+        tafseer_book_url = reverse('tafseer-book-details',
+                                   kwargs={'tafseer_id': 9999})
+        response = self.client.get(tafseer_book_url)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
