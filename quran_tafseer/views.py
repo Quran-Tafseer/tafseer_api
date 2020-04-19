@@ -70,3 +70,15 @@ class AyahTafseerRangeView(LoggingMixin, generics.ListAPIView):
         except TafseerText.DoesNotExist:
             raise NotFound('Tafseer with provided id, sura id, or range or '
                            'ayah are not found')
+
+
+class TafseerBooksDetailsView(LoggingMixin, generics.RetrieveAPIView):
+    serializer_class = TafseerSerializer
+    model = TafseerText
+
+    def get_object(self):
+        tafseer_id = self.kwargs['tafseer_id']
+        try:
+            return Tafseer.objects.get(id=tafseer_id)
+        except Tafseer.DoesNotExist:
+            raise NotFound('Tafseer with provided id not found')
