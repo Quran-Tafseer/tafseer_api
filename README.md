@@ -56,7 +56,7 @@ to create one.
 ## Clients
 
 * [CSharp client](https://github.com/xh0/QuranTafseerCSharpClient) created by [Bassam Abd Elhamid](https://github.com/xh0)
-
+* [Python client pytafseer](https://pypi.org/project/pytafseer/) created by [Emad Mokhtar Elsayed Habib](https://github.com/emadmokhtar)
 
 ## Quran Tafseer/Interpretation Sources
 
