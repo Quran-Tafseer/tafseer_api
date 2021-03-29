@@ -38,8 +38,8 @@ class TafseerTextManager(models.Manager):
 
     def get_ayah_tafseer_range(self, tafseer_id, sura_id, ayah_from, ayah_to):
         tafseer_text = self.get_sura_tafseer(tafseer_id, sura_id).filter(
-            ayah__id__gte=ayah_from,
-            ayah__id__lte=ayah_to
+            ayah__number__gte=ayah_from,
+            ayah__number__lte=ayah_to
         )
         if not tafseer_text:
             raise TafseerText.DoesNotExist
