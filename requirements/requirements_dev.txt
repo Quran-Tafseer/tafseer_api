@@ -4,7 +4,7 @@ chardet==3.0.4
 codecov==2.0.10
 configparser==3.5.0
 coverage==4.4.2
-Django==2.2.18
+Django==2.2.22
 django-cors-headers==3.7.0
 django-environ==0.4.4
 django-filter==1.0.4
