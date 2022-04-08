@@ -2,6 +2,8 @@
 
 Quran Tafseer REST APIs and Quran Text
 
+[Official Documentation](http://api.quran-tafseer.com/en/docs/)
+
 ## Idea
 
 The idea is to create one REST API for all Quran Tafseer/Interpretation for developers.
