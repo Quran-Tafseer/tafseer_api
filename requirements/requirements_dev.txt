@@ -7,7 +7,7 @@ coverage==4.4.2
 Django==2.2.28
 django-cors-headers==3.7.0
 django-environ==0.4.4
-django-filter==1.0.4
+django-filter==2.4.0
 django-silk==1.1.0
 djangorestframework==3.11.2
 drf-extensions==0.3.1
