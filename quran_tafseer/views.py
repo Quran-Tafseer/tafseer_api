@@ -3,13 +3,12 @@ from __future__ import unicode_literals
 
 from rest_framework import generics
 from rest_framework.exceptions import NotFound
-from rest_framework_tracking.mixins import LoggingMixin
 
 from .models import Tafseer, TafseerText
 from .serializers import TafseerSerializer, TafseerTextSerializer
 
 
-class TafseerView(LoggingMixin, generics.ListAPIView):
+class TafseerView(generics.ListAPIView):
     serializer_class = TafseerSerializer
     queryset = Tafseer.objects.all().order_by('pk')
 
@@ -21,7 +20,7 @@ class TafseerView(LoggingMixin, generics.ListAPIView):
         return qs
 
 
-class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
+class AyahTafseerView(generics.RetrieveAPIView):
     serializer_class = TafseerTextSerializer
     model = TafseerText
     next_ayah = None
@@ -53,7 +52,7 @@ class AyahTafseerView(LoggingMixin, generics.RetrieveAPIView):
         return response
 
 
-class AyahTafseerRangeView(LoggingMixin, generics.ListAPIView):
+class AyahTafseerRangeView(generics.ListAPIView):
     serializer_class = TafseerTextSerializer
     model = TafseerText
 
@@ -72,7 +71,7 @@ class AyahTafseerRangeView(LoggingMixin, generics.ListAPIView):
                            'ayah are not found')
 
 
-class TafseerBooksDetailsView(LoggingMixin, generics.RetrieveAPIView):
+class TafseerBooksDetailsView(generics.RetrieveAPIView):
     serializer_class = TafseerSerializer
     model = TafseerText
 
