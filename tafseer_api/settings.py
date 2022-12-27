@@ -1,9 +1,8 @@
 import os
-
 from django.utils.translation import ugettext_lazy as _
-
 import environ
-import rollbar
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Initialize environ
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,15 +129,26 @@ REST_FRAMEWORK = {
     ] + REST_FRAMEWORK_PARSER
 }
 
-# Rollbar
-
-ROLLBAR = {
-    'access_token': env('ROLLBAR_ACCESS_TOKEN', default=''),
-    'environment': 'development' if DEBUG else 'production',
-    'root': BASE_DIR,
-}
-rollbar.init(**ROLLBAR)
-
 # CORS support
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+# Sentry
+
+sentry_dsn = env('SENTRY_DSN')
+sentry_sdk.init(
+    dsn=sentry_dsn,
+    integrations=[
+        DjangoIntegration(),
+    ],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
