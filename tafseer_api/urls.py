@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
     url('sentry-debug/', trigger_error),
+    url('', include('django_prometheus.urls')),
     ]
 
 urlpatterns += i18n_patterns(url(r'^', include('docs.urls')))

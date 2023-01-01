@@ -11,7 +11,7 @@ env_file_path = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file_path)  # reading .env file
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env.bool('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY')
 
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # 3rd party Apps
     'rest_framework',
     'corsheaders',
+    'django_prometheus',
     # Internal Apps
     'quran_text',
     'quran_tafseer',
@@ -40,6 +41,7 @@ PRE_MIDDLEWARE = env.list('PRE_MIDDLEWARE', default=[])
 POST_MIDDLEWARE = env.list('POST_MIDDLEWARE', default=[])
 
 MIDDLEWARE = PRE_MIDDLEWARE + [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -49,7 +51,7 @@ MIDDLEWARE = PRE_MIDDLEWARE + [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ] + POST_MIDDLEWARE
 
 ROOT_URLCONF = 'tafseer_api.urls'
@@ -136,19 +138,20 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # Sentry
 
-sentry_dsn = env('SENTRY_DSN')
-sentry_sdk.init(
-    dsn=sentry_dsn,
-    integrations=[
-        DjangoIntegration(),
-    ],
+sentry_dsn = env.str('SENTRY_DSN', None)
+if sentry_dsn is None:
+    sentry_sdk.init(
+        dsn=sentry_dsn,
+        integrations=[
+            DjangoIntegration(),
+        ],
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0,
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
 
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True
-)
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
