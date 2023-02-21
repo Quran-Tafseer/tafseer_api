@@ -4,13 +4,20 @@ from __future__ import unicode_literals
 from rest_framework import generics
 from rest_framework.exceptions import NotFound
 
+from core.views import MetricAPIGetMixin
 from .models import Tafseer, TafseerText
 from .serializers import TafseerSerializer, TafseerTextSerializer
 
 
-class TafseerView(generics.ListAPIView):
+METRIC_DESC = "The number of request toward Quran Tafseer. This includes getting list of tafseers, getting an ayah" \
+              "tafseer, or range of ayahat's tafseer"
+
+
+class TafseerView(generics.ListAPIView, MetricAPIGetMixin):
     serializer_class = TafseerSerializer
     queryset = Tafseer.objects.all().order_by('pk')
+    metric_desc = METRIC_DESC
+    metric_name = "tafseer_req"
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -20,10 +27,12 @@ class TafseerView(generics.ListAPIView):
         return qs
 
 
-class AyahTafseerView(generics.RetrieveAPIView):
+class AyahTafseerView(generics.RetrieveAPIView, MetricAPIGetMixin):
     serializer_class = TafseerTextSerializer
     model = TafseerText
     next_ayah = None
+    metric_desc = METRIC_DESC
+    metric_name = "tafseer_req"
 
     def get_object(self):
         tafseer_id = self.kwargs['tafseer_id']
@@ -52,9 +61,11 @@ class AyahTafseerView(generics.RetrieveAPIView):
         return response
 
 
-class AyahTafseerRangeView(generics.ListAPIView):
+class AyahTafseerRangeView(generics.ListAPIView, MetricAPIGetMixin):
     serializer_class = TafseerTextSerializer
     model = TafseerText
+    metric_desc = METRIC_DESC
+    metric_name = "tafseer_req"
 
     def get_queryset(self):
         tafseer_id = self.kwargs['tafseer_id']
@@ -71,9 +82,11 @@ class AyahTafseerRangeView(generics.ListAPIView):
                            'ayah are not found')
 
 
-class TafseerBooksDetailsView(generics.RetrieveAPIView):
+class TafseerBooksDetailsView(generics.RetrieveAPIView, MetricAPIGetMixin):
     serializer_class = TafseerSerializer
     model = TafseerText
+    metric_desc = METRIC_DESC
+    metric_name = "tafseer_req"
 
     def get_object(self):
         tafseer_id = self.kwargs['tafseer_id']
