@@ -35,6 +35,6 @@ pytz==2017.2
 requests==2.20.1
 sentry-sdk==1.12.1
 six==1.11.0
-sqlparse==0.2.4
+sqlparse==0.4.4
 testfixtures==5.1.1
 urllib3==1.26.5
