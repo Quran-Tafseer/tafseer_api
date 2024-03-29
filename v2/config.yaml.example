@@ -1,0 +1,13 @@
+database:
+  host: "localhost"
+  port: "5432"
+  dbname: "golang_rest_service_template"
+  username: "root"
+  password: ""
+  sslmode: "disable"
+logger:
+    level: "debug"
+service:
+    addr: "localhost"
+    port: "1323"
+    env: "dev"
