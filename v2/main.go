@@ -34,6 +34,7 @@ func Run() error {
 	// Setup Quran Endpoints
 	quranDBRepo := data.NewQuranRepository(db)
 	router.SetupQuranRouterNServices(echoSvc, quranDBRepo)
+
 	// Setup Tafseer Endpoints
 	tafseerDBRepo := data.NewTafseerRepository(db)
 	router.SetupTafseerRouterServices(echoSvc, tafseerDBRepo)

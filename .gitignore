@@ -110,3 +110,5 @@ db.sqlite3
 
 # Pycharm
 .idea
+
+.env
