@@ -6,15 +6,15 @@ import (
 )
 
 type TafseerService struct {
-	svc *domain.TafseerDomain
+	svc domain.TafseerDomainer
 }
 
-func NewTafseerService(svc *domain.TafseerDomain) *TafseerService {
+func NewTafseerService(svc domain.TafseerDomainer) *TafseerService {
 	return &TafseerService{svc: svc}
 }
 
 func (s *TafseerService) GetTafseerList(c echo.Context) error {
-	tafseerList, err := (*s.svc).GetTafseerList()
+	tafseerList, err := s.svc.GetTafseerList()
 	if err != nil {
 		return err
 	}
@@ -30,7 +30,7 @@ func (s *TafseerService) GetAyahTafseer(c echo.Context) error {
 	surahIndex := c.Param("surah_index")
 	ayahNumber := c.Param("ayah_number")
 	tafseerId := c.Param("tafseer_id")
-	tafseer, err := (*s.svc).GetAyahTafseer(surahIndex, ayahNumber, tafseerId)
+	tafseer, err := s.svc.GetAyahTafseer(surahIndex, ayahNumber, tafseerId)
 	if err != nil {
 		return err
 	}
@@ -49,7 +49,7 @@ func (s *TafseerService) GetAyahRangeTafseer(c echo.Context) error {
 	ayahNumberTo := c.Param("ayah_to")
 	tafseerId := c.Param("tafseer_id")
 
-	tafseerRange, err := (*s.svc).GetAyahRangeTafseer(surahIndex, ayahNumberFrom, ayahNumberTo, tafseerId)
+	tafseerRange, err := s.svc.GetAyahRangeTafseer(surahIndex, ayahNumberFrom, ayahNumberTo, tafseerId)
 	if err != nil {
 		return err
 	}

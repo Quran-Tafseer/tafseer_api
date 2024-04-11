@@ -2,6 +2,12 @@ package domain
 
 import "tafseer_api/data"
 
+type TafseerDomainer interface {
+	GetTafseerList() (*TafseerListDetailsResponse, error)
+	GetAyahTafseer(surahIndex string, ayahNumber string, tafseerId string) (*AyahTafseerResponse, error)
+	GetAyahRangeTafseer(surahIndex string, ayahNumberFrom string, ayahNumberTo string, tafseerId string) (*AyahTafseerListResponse, error)
+}
+
 type TafseerDomain struct {
 	repo *data.TafseerRepository
 }
