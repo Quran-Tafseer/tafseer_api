@@ -6,16 +6,16 @@ import (
 )
 
 type QuranService struct {
-	svc *domain.QuranDomain
+	svc domain.QuranDomainer
 }
 
-func NewQuranService(svc *domain.QuranDomain) *QuranService {
+func NewQuranService(svc domain.QuranDomainer) *QuranService {
 	return &QuranService{svc: svc}
 }
 
 func (s *QuranService) GetSurahs(c echo.Context) error {
 	// Get surahs from database
-	surahs, err := (*s.svc).GetSurahs()
+	surahs, err := s.svc.GetSurahs()
 	if err != nil {
 		return err
 	}
@@ -30,7 +30,7 @@ func (s *QuranService) GetSurahs(c echo.Context) error {
 func (s QuranService) GetAyah(c echo.Context) error {
 	surahIndex := c.Param("sura_number")
 	ayahNumber := c.Param("ayah_number")
-	ayah, err := (*s.svc).GetAyah(surahIndex, ayahNumber)
+	ayah, err := s.svc.GetAyah(surahIndex, ayahNumber)
 	if err != nil {
 		return err
 	}
