@@ -3,9 +3,9 @@ package config
 import "fmt"
 
 type Service struct {
-	Addr string `fig:"addr" default:"localhost"`
-	Port string `fig:"port" default:"1323"`
-	Env  string `fig:"env" default:"dev"`
+	Addr string `yaml:"addr" env:"ADDR" env-default:"localhost"`
+	Port string `yaml:"port" env:"PORT" env-default:"8080"`
+	Env  string `yaml:"env" env:"ENV" env-default:"dev"`
 }
 
 func (svc Service) FullAddress() string {

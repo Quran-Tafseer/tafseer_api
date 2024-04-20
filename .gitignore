@@ -172,6 +172,5 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/goland,go,macos
 
-### Project ###
-
-config.yaml
+# Project
+.env

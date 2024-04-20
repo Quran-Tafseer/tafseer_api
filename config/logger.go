@@ -1,17 +1,36 @@
 package config
 
-import "go.uber.org/zap"
+import (
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
+)
 
-func NewLogger(env string) *zap.Logger {
+func NewLogger(env string, logLevel string) *zap.Logger {
+	var config zap.Config
+
 	switch env {
 	case "dev":
-		logger, _ := zap.NewDevelopment()
-		return logger
+		config = zap.NewDevelopmentConfig()
 	case "prod":
-		logger, _ := zap.NewProduction()
-		return logger
+		config = zap.NewProductionConfig()
 	default:
-		logger, _ := zap.NewDevelopment()
-		return logger
+		config = zap.NewDevelopmentConfig()
 	}
+
+	// Set the log level
+	switch logLevel {
+	case "debug":
+		config.Level = zap.NewAtomicLevelAt(zapcore.DebugLevel)
+	case "info":
+		config.Level = zap.NewAtomicLevelAt(zapcore.InfoLevel)
+	case "warn":
+		config.Level = zap.NewAtomicLevelAt(zapcore.WarnLevel)
+	case "error":
+		config.Level = zap.NewAtomicLevelAt(zapcore.ErrorLevel)
+	default:
+		config.Level = zap.NewAtomicLevelAt(zapcore.InfoLevel)
+	}
+
+	logger, _ := config.Build()
+	return logger
 }
