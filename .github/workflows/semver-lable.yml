@@ -7,7 +7,6 @@ on:
 
 jobs:
   semver_tag_from_pr:
-    # permissions required to find PR for last commit and push the new tag
     permissions:
       contents: write
       pull-requests: read
@@ -15,10 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: "0" # we need full git-history to determine the last semVer tag
+          fetch-depth: "0"
           ssh-key: ${{ secrets.semver_github_action }}
       - name: bump semVer
-        uses: simontheleg/semver-tag-from-pr-action@v1
+        uses: simontheleg/semver-tag-from-pr-action@v1.4.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           repo_ssh_key: ${{ secrets.SEMVER_GITHUB_ACTION_PRIVATE }}
