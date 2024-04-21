@@ -7,7 +7,6 @@ on:
 
 jobs:
   semver_tag_from_pr:
-    needs: [golangci, test]
     permissions:
       contents: write
       pull-requests: read
