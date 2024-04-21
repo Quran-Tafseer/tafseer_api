@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - main
+      - v2/master
   pull_request:
 
 permissions:
