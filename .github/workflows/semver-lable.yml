@@ -15,9 +15,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: "0"
-          ssh-key: ${{ secrets.semver_github_action }}
+          ssh-key: ${{ secrets.SEMVER_GITHUB_ACTION_PRIVATE }}
       - name: bump semVer
         uses: simontheleg/semver-tag-from-pr-action@v1.4.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          repo_ssh_key: ${{ secrets.SEMVER_GITHUB_ACTION_PRIVATE }}
+          repo_ssh_key: ${{ secrets.semver_github_action }}
