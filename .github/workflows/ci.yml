@@ -1,4 +1,5 @@
-name: golangci-lint
+name: Countinue Integration
+
 on:
   push:
     branches:
@@ -54,3 +55,21 @@ jobs:
 
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
+
+  test:
+    name: Run Go tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        uses: robherley/go-test-action@v0
+
