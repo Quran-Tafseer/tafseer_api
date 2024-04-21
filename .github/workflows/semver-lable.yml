@@ -3,7 +3,7 @@ name: Semantic Versioning Label
 on:
   push:
     branches:
-      - master
+      - v2/master
 
 jobs:
   semver_tag_from_pr:
