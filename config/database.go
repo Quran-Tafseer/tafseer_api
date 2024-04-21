@@ -7,12 +7,12 @@ import (
 )
 
 type Database struct {
-	Host     string `fig:"host" default:"localhost"`
-	Port     string `fig:"port" default:"3306"`
-	User     string `fig:"user" default:"root"`
-	Password string `fig:"password" default:""`
-	DBName   string `fig:"dbname" default:"golang_rest_service_template"`
-	SSLMode  string `fig:"sslmode" default:"disable"`
+	Host     string `yaml:"host" env:"DB_HOST" env-default:"localhost"`
+	Port     string `yaml:"port" env:"DB_PORT" env-default:"3306"`
+	User     string `yaml:"user" env:"DB_USER" env-default:"root"`
+	Password string `yaml:"password" env:"DB_PASS" env-default:""`
+	DBName   string `yaml:"dbname" env:"DB_NAME" env-default:"golang_rest_service_template"`
+	SSLMode  string `yaml:"sslmode" env:"DB_SSL_MODE" env-default:"disable"`
 }
 
 func (db *Database) GetDSN() string {

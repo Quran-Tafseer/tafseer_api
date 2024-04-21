@@ -22,7 +22,7 @@ func Run() error {
 	}
 
 	// Setup logger
-	logger := config.NewLogger(cfg.Env)
+	logger := cfg.ConfigLogger()
 
 	// Echo middlewares
 	config.SetupMiddlewares(echoSvc, logger)

@@ -1,22 +1,27 @@
 package config
 
 import (
-	"github.com/kkyr/fig"
+	"github.com/ilyakaznacheev/cleanenv"
 	"go.uber.org/zap"
 )
 
 type Config struct {
 	Service
-	Logger zap.Logger
+	Logger   zap.Logger
+	LogLevel string `yaml:"log_level" env:"LOG_LEVEL" env-default:"info"`
 	Database
 }
 
 func LoadConfig() (*Config, error) {
 	var cfg Config
 
-	if err := fig.Load(&cfg, fig.File("config.yaml"), fig.UseEnv("svc")); err != nil {
+	if err := cleanenv.ReadEnv(&cfg); err != nil {
 		return nil, err
 	}
 
 	return &cfg, nil
+}
+
+func (c Config) ConfigLogger() *zap.Logger {
+	return NewLogger(c.Env, c.LogLevel)
 }
