@@ -14,7 +14,7 @@ permissions:
   # pull-requests: read
 
 jobs:
-  golangci:
+  golang-ci:
     name: Go lint
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +56,7 @@ jobs:
           # Optional: The mode to install golangci-lint. It can be 'binary' or 'goinstall'.
           # install-mode: "goinstall"
 
-  gotest:
+  golang-test:
     name: Go tests
     runs-on: ubuntu-latest
     steps:
@@ -74,7 +74,7 @@ jobs:
         uses: robherley/go-test-action@v0
 
 
-  git-version:
+  new-version:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
