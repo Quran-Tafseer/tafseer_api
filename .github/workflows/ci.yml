@@ -75,7 +75,7 @@ jobs:
 
 
   new-version:
-    name: Bump tag version (semver)
+    name: Bump release tag version (semver)
     runs-on: ubuntu-latest
     steps:
       - uses: 1k-off/action-semver-tag-release@1.0.1
