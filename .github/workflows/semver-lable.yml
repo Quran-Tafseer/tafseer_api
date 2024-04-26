@@ -6,16 +6,22 @@ on:
       - v2/master
 
 jobs:
-  semver_tag_from_pr:
-    permissions:
-      contents: write
-      pull-requests: read
+  lint:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v3
-          with:
-            fetch-depth: "0" # we need full git-history to determine the last semVer tag
-        - name: bump semVer
-          uses: simontheleg/semver-tag-from-pr-action@v1.4.0
-          with:
-            repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}   # checkout the correct branch name
+          fetch-depth: 0                # fetch the whole repo history
+
+      - name: Git Version
+        id: version
+        uses: codacy/git-version@2.7.1
+
+      - name: Use the version
+        run: |
+          echo ${{ steps.version.outputs.version }}
+      - name: Use the previous version
+        run: |
+          echo ${{ steps.version.outputs.previous-version }}
