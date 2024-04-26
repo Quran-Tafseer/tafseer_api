@@ -75,21 +75,11 @@ jobs:
 
 
   new-version:
+    name: Bump tag version (semver)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: 1k-off/action-semver-tag-release@1.0.1
+        id: tag
         with:
-          ref: ${{ github.head_ref }}   # checkout the correct branch name
-          fetch-depth: 0                # fetch the whole repo history
-
-      - name: Git Version
-        id: version
-        uses: codacy/git-version@2.7.1
-
-      - name: Use the version
-        run: |
-          echo ${{ steps.version.outputs.version }}
-      - name: Use the previous version
-        run: |
-          echo ${{ steps.version.outputs.previous-version }}
+          version: latest
+          github_token: ${{ secrets.GITHUB_TOKEN }}
