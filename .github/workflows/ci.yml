@@ -81,6 +81,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_format: 'v${{ steps.version.outputs.version }}'
+          release_branch: 'v2/master'
       - name: Echo new tag
         run: |
          echo "New tag is ${{ steps.tag.outputs.tag }}"
