@@ -4,14 +4,11 @@ on:
   push:
     branches:
       - master
-      - main
       - v2/master
   pull_request:
 
 permissions:
-  contents: read
-  # Optional: allow read access to pull request. Use with `only-new-issues` option.
-  # pull-requests: read
+  contents: write
 
 jobs:
   golang-ci:
@@ -72,7 +69,6 @@ jobs:
 
       - name: Test
         uses: robherley/go-test-action@v0
-
 
   new-version:
     runs-on: ubuntu-latest
