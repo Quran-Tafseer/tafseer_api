@@ -1,22 +1,33 @@
-FROM python:3.6
-MAINTAINER Emad Mokhtar emad@emadmokhtar.com
-ENV PYTHONUNBUFFERED 1
-ENV APP_PATH /app
-RUN mkdir $APP_PATH
-ADD . $APP_PATH
+FROM golang:latest as builder
 
-WORKDIR $APP_PATH
+LABEL maintainer="Emad Mokhtar <me@emadmokhtar.com>"
 
-# Install requirements
-RUN pip install -r requirements/requirements.txt
+# Set the Current Working Directory inside the container
+WORKDIR /app
 
-# Migrate data models
-RUN python manage.py migrate
+# Copy go mod and sum files
+COPY go.mod go.sum ./
 
-# Load data
-RUN python manage.py loaddata dump_data/sura.json
-RUN python manage.py loaddata dump_data/quran_text.json
-RUN python manage.py loaddata dump_data/tafseer.json
+# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
+RUN go mod download
 
+# Copy the source from the current directory to the Working Directory inside the container
+COPY . .
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+# Build the Go app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/service
+
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /root/
+
+# Copy the Pre-built binary file from the previous stage
+COPY --from=builder /app/main .
+
+# Expose port 8080 to the outside
+EXPOSE 8080
+
+# Command to run the executable
+CMD ["./main"]
