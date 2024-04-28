@@ -10,6 +10,7 @@ env:
 
 jobs:
   release:
+    name: "GitHub Release & Docker Hub Push"
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
@@ -42,7 +43,7 @@ jobs:
           prerelease: false
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v1.10.0
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
