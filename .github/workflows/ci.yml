@@ -71,14 +71,13 @@ jobs:
         uses: robherley/go-test-action@v0
 
   new-version:
-    name: Bump tag version (semver)
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
-       - uses: 1k-off/action-semver-tag-release@1.0.1
-         name: Bump version and push tag
-         id: tag
-         with:
-           version: latest
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-       - name: Echo the new tag
-         run: echo "The new tag is ${{ steps.tag.outputs.tag }}"
+      - name: Tag
+        uses: K-Phoen/semver-release-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Echo new tag
+        run: |
+         echo "New tag is ${{ steps.tag.outputs.tag }}"
