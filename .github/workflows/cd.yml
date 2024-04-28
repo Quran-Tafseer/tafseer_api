@@ -1,14 +1,46 @@
 name: Continuous Deployment
 
 on:
-  push:
-    tags:
-      - 'v*'
+  pull_request:
+    types: [closed]
+    branches: ['master', 'v2/master']
 
 env:
   IMAGE_NAME: tafseer_api
 
 jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get version
+        id: get_version
+        run: |
+          echo ::set-output name=VERSION::$(cat git-version)
+
+      - name: Bump version and create tag
+        id: bump_version
+        uses: mathieudutour/github-tag-action@v5.6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: patch
+          release_branches: master
+          custom_tag: ${{ steps.get_version.outputs.VERSION }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          release_name: Release ${{ steps.bump_version.outputs.new_tag }}
+          draft: false
+          prerelease: false
+
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
