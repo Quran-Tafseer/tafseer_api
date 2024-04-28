@@ -27,7 +27,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: patch
-          release_branches: master
+          release_branches: master,v2/master
           custom_tag: ${{ steps.get_version.outputs.VERSION }}
 
       - name: Create Release
