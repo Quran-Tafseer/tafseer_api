@@ -75,11 +75,12 @@ jobs:
 
 
   new-version:
-    name: Bump release tag version (semver)
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
-      - uses: 1k-off/action-semver-tag-release@1.0.1
-        id: tag
+      - name: Tag
+        uses: K-Phoen/semver-release-action@master
         with:
-          version: latest
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          release_branch: master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
