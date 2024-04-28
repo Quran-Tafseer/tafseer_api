@@ -70,7 +70,6 @@ jobs:
       - name: Test
         uses: robherley/go-test-action@v0
 
-
   new-version:
     name: Bump tag version (semver)
     runs-on: ubuntu-latest
