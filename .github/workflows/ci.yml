@@ -81,4 +81,4 @@ jobs:
            version: latest
            github_token: ${{ secrets.GITHUB_TOKEN }}
        - name: Echo the new tag
-         run: echo "The new tag is ${{ steps.tag.outputs.semver-tag-release-path }}"
+         run: echo "The new tag is ${{ steps.tag.outputs.tag }}"
