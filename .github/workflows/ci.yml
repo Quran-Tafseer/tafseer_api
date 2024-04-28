@@ -75,7 +75,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - uses: 1k-off/action-semver-tag-release@1.0.1
+         name: Bump version and push tag
          id: tag
          with:
            version: latest
            github_token: ${{ secrets.GITHUB_TOKEN }}
+       - name: Echo the new tag
+         run: echo "The new tag is ${{ steps.tag.outputs.semver-tag-release-path }}"
