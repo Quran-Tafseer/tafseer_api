@@ -78,8 +78,12 @@ jobs:
     name: Bump tag version (semver)
     runs-on: ubuntu-latest
     steps:
-      - uses: 1k-off/action-semver-tag-release@1.0.1
-        id: tag
+      - uses: actions/checkout@master
+      - name: Bump version and push tag
+        uses: hennejg/github-tag-action@v4.1.jh1
         with:
-          version: latest
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          dry_run: true
+          default_bump: patch
+          tag_prefix: v
+          release_branches: master, v2/master
