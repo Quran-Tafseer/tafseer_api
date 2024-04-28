@@ -76,7 +76,8 @@ jobs:
     steps:
       - name: Tag
         uses: K-Phoen/semver-release-action@master
-        with:
-          release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Echo new tag
+        run: |
+         echo "New tag is ${{ steps.tag.outputs.tag }}"
