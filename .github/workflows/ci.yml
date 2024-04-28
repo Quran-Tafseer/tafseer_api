@@ -69,15 +69,3 @@ jobs:
 
       - name: Test
         uses: robherley/go-test-action@v0
-
-  new-version:
-    runs-on: ubuntu-latest
-    # if: github.event.pull_request.merged
-    steps:
-      - name: Tag
-        uses: K-Phoen/semver-release-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Echo new tag
-        run: |
-         echo "New tag is ${{ steps.tag.outputs.tag }}"
