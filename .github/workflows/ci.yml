@@ -74,23 +74,8 @@ jobs:
     name: Bump tag version (semver)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create a GitHub release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
-          dry_run: true
-      - name: Echo variables
-        run: |
-          echo "The value of new_tag is ${{ steps.tag_version.outputs.new_tag }}"
-          echo "The value of new_version is ${{ steps.tag_version.outputs.new_version }}"
-          echo "The value of previous_tag is ${{ steps.tag_version.outputs.previous_tag }}"
-          echo "The value of previous_version is ${{ steps.tag_version.outputs.previous_version }}"
-          echo "The value of release_type is ${{ steps.tag_version.outputs.release_type }}"
+       - uses: 1k-off/action-semver-tag-release@1.0.1
+         id: tag
+         with:
+           version: latest
+           github_token: ${{ secrets.GITHUB_TOKEN }}
